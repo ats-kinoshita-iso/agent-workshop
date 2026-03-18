@@ -1,0 +1,38 @@
+[project]
+name = "agent-workshop"
+version = "0.1.0"
+description = "Staging ground for Claude Code meta-skills, agents, tools, and hooks"
+requires-python = ">=3.11"
+dependencies = ["anthropic>=0.40"]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.4",
+    "mypy>=1.10",
+    "pyyaml>=6.0",
+    "types-pyyaml>=6.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v"
+
+[tool.ruff]
+line-length = 100
+exclude = ["experiments/"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+strict = true
+exclude = ["experiments/"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["tools"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

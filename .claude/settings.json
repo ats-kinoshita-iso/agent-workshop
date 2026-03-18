@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(uv:*)",
+      "Bash(bun:*)",
+      "Bash(bunx:*)",
+      "Bash(python:*)",
+      "Bash(git:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(ls:*)"
+    ],
+    "deny": []
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd /home/user/agent-workshop && uv run python tools/registry_gen.py 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}

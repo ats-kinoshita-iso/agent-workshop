@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-03-18T06:54:16.928298Z",
+  "skills": [
+    {
+      "name": "hello-world",
+      "version": "1.0.0",
+      "trigger": "say hello or greet the user",
+      "description": "Reference skill implementation \u2014 greets the user and describes the workshop repo.",
+      "targets": [],
+      "tags": [
+        "reference",
+        "example"
+      ],
+      "source": "/home/user/agent-workshop/skills/hello-world.md",
+      "status": "valid"
+    },
+    {
+      "name": "meta-research",
+      "version": "1.0.0",
+      "trigger": "run a meta-research iteration to improve skills",
+      "description": "Autoresearch-style loop that iteratively improves Claude Code skills in this workshop.",
+      "targets": [
+        "agent-workshop"
+      ],
+      "tags": [
+        "meta",
+        "research",
+        "automation",
+        "skills"
+      ],
+      "source": "/home/user/agent-workshop/skills/meta-research.md",
+      "status": "valid"
+    },
+    {
+      "name": "planning",
+      "version": "1.0.0",
+      "trigger": "create an implementation plan with gates and tests for this task",
+      "description": "Produces a phased implementation plan with explicit gates and validating tests at each checkpoint.",
+      "targets": [],
+      "tags": [
+        "planning",
+        "architecture",
+        "gates",
+        "testing"
+      ],
+      "source": "/home/user/agent-workshop/skills/planning.md",
+      "status": "valid"
+    }
+  ],
+  "agents": []
+}
