@@ -176,10 +176,13 @@ def main(argv: list[str] | None = None) -> int:
             # Snapshot for potential rollback
             snapshot = snapshot_skills()
 
-            # --- Agent would modify skills/ here ---
-            # In a full implementation this calls Claude via the SDK.
-            # For now, the harness stubs this step and just re-scores.
-            print("  [stub] Agent modification step not yet wired (see Gate 3 notes).")
+            # Invoke Claude to propose one skill change
+            from experiments.meta_research.agent import invoke_agent
+            proposal = invoke_agent(PROJECT_ROOT / "skills", i)
+            skill_path = PROJECT_ROOT / "skills" / f"{proposal['skill_name']}.md"
+            skill_path.write_text(str(proposal["content"]), encoding="utf-8")
+            print(f"  Agent: {proposal['action']} '{proposal['skill_name']}'"
+                  f" — {proposal['rationale']}")
 
             gate1_passed, gate1_output = run_gate1()
             print(f"  Gate 1: {'PASS' if gate1_passed else 'FAIL'}")

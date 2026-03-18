@@ -42,5 +42,25 @@ The agent should explore in this order of priority:
 
 ## Iteration Log
 
-Maintained automatically by `run.py` in `experiments/meta-research/log.jsonl`.
+Maintained automatically by `run.py` in `experiments/meta_research/log.jsonl`.
 Each line is a JSON object: `{iteration, score, delta, action, skill, kept, timestamp}`.
+
+---
+
+## Current Research Focus
+
+**Target skill:** `skills/planning.md` — improve this skill's planning quality score
+as measured by `experiments/meta_research/eval_planning.py`.
+
+Planning quality rubric sub-metrics (see `eval_planning.py` for weights):
+
+| Sub-metric | Criterion |
+|------------|-----------|
+| `has_numbered_phases` | Body contains numbered steps or phases |
+| `has_gates` | Body explicitly mentions "gate" or "checkpoint" |
+| `has_test_validation` | Body mentions testing or validation |
+| `has_output_format` | Body specifies the deliverable / output format |
+| `body_completeness` | Word count relative to 200-word target |
+
+The agent should improve the lowest-scoring sub-metric each iteration while keeping
+the general skill quality score (from `score.py`) at ≥ 0.85.

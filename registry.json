@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-18T06:14:41.042443Z",
+  "generated_at": "2026-03-18T06:48:45.865503Z",
   "skills": [
     {
       "name": "hello-world",
@@ -29,6 +29,21 @@
         "skills"
       ],
       "source": "/home/user/agent-workshop/skills/meta-research.md",
+      "status": "valid"
+    },
+    {
+      "name": "planning",
+      "version": "1.0.0",
+      "trigger": "create an implementation plan with gates and tests for this task",
+      "description": "Produces a phased implementation plan with explicit gates and validating tests at each checkpoint.",
+      "targets": [],
+      "tags": [
+        "planning",
+        "architecture",
+        "gates",
+        "testing"
+      ],
+      "source": "/home/user/agent-workshop/skills/planning.md",
       "status": "valid"
     }
   ],
