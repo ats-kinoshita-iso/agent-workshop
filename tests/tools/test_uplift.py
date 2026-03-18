@@ -7,9 +7,8 @@ from pathlib import Path
 
 import pytest
 
-from tools.uplift import _target_skills_dir, main, uplift_skill, uplift_all
 from tools.skill_loader import parse_skill
-
+from tools.uplift import _target_skills_dir, main, uplift_all, uplift_skill
 
 SKILLS_DIR = Path(__file__).parent.parent.parent / "skills"
 HELLO_WORLD = SKILLS_DIR / "hello-world.md"

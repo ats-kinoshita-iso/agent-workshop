@@ -1,7 +1,7 @@
 """Meta-research loop harness — autoresearch-style iteration over Claude Code skills.
 
 Usage:
-    uv run python experiments/meta-research/run.py [--dry-run] [--iterations N]
+    uv run python experiments/meta_research/run.py [--dry-run] [--iterations N]
 
 Exit codes:
     0  — completed normally
@@ -45,9 +45,15 @@ def run_gate1() -> tuple[bool, str]:
     return passed, result.stdout + result.stderr
 
 
-def snapshot_skills() -> dict[str, str]:
-    """Capture current contents of all skill files as a dict {filename: content}."""
-    skills_dir = PROJECT_ROOT / "skills"
+def snapshot_skills(skills_dir: Path = PROJECT_ROOT / "skills") -> dict[str, str]:
+    """Capture current contents of all skill files as a dict {filename: content}.
+
+    Args:
+        skills_dir: Directory containing skill .md files (default: PROJECT_ROOT/skills).
+
+    Returns:
+        Dict mapping filename to file contents, excluding README.md.
+    """
     return {
         p.name: p.read_text(encoding="utf-8")
         for p in sorted(skills_dir.glob("*.md"))
@@ -55,9 +61,16 @@ def snapshot_skills() -> dict[str, str]:
     }
 
 
-def restore_skills(snapshot: dict[str, str]) -> None:
-    """Restore skill files from a snapshot (discard iteration changes)."""
-    skills_dir = PROJECT_ROOT / "skills"
+def restore_skills(
+    snapshot: dict[str, str],
+    skills_dir: Path = PROJECT_ROOT / "skills",
+) -> None:
+    """Restore skill files from a snapshot (discard iteration changes).
+
+    Args:
+        snapshot: Dict of {filename: content} from snapshot_skills().
+        skills_dir: Directory to restore into (default: PROJECT_ROOT/skills).
+    """
     # Remove any new files added during the iteration
     for p in skills_dir.glob("*.md"):
         if p.name.upper() == "README.MD":
@@ -69,9 +82,14 @@ def restore_skills(snapshot: dict[str, str]) -> None:
         (skills_dir / name).write_text(content, encoding="utf-8")
 
 
-def append_log(entry: dict[str, object]) -> None:
-    """Append a JSON entry to the iteration log."""
-    with LOG_FILE.open("a", encoding="utf-8") as f:
+def append_log(entry: dict[str, object], log_file: Path = LOG_FILE) -> None:
+    """Append a JSON entry to the iteration log.
+
+    Args:
+        entry: Dict to serialise as one JSON line.
+        log_file: Path to the JSONL log file (default: LOG_FILE).
+    """
+    with log_file.open("a", encoding="utf-8") as f:
         f.write(json.dumps(entry) + "\n")
 
 

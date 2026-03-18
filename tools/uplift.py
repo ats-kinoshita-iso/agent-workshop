@@ -10,7 +10,6 @@ from pathlib import Path
 
 from tools.skill_loader import Skill, SkillValidationError, load_skills_dir, parse_skill
 
-
 SKILLS_SUBDIR = "skills"
 
 

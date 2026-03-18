@@ -8,7 +8,6 @@ from pathlib import Path
 
 import yaml
 
-
 REQUIRED_FIELDS: frozenset[str] = frozenset({"name", "version", "trigger", "description"})
 SEMVER_RE = re.compile(r"^\d+\.\d+\.\d+$")
 

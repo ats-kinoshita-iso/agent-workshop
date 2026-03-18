@@ -8,7 +8,6 @@ from pathlib import Path
 
 from tools.skill_loader import SkillValidationError, parse_skill
 
-
 PROJECT_ROOT = Path(__file__).parent.parent
 REGISTRY_PATH = PROJECT_ROOT / "registry.json"
 SKILLS_DIR = PROJECT_ROOT / "skills"

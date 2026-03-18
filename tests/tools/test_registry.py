@@ -5,10 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-import pytest
-
-from tools.registry_gen import build_registry, write_registry, SKILLS_DIR, REGISTRY_PATH
-
+from tools.registry_gen import SKILLS_DIR, build_registry, write_registry
 
 REGISTRY_FILE = Path(__file__).parent.parent.parent / "registry.json"
 
@@ -20,7 +17,9 @@ REGISTRY_FILE = Path(__file__).parent.parent.parent / "registry.json"
 
 def test_registry_file_exists() -> None:
     """registry.json must exist at the project root."""
-    assert REGISTRY_FILE.exists(), "registry.json not found — run: uv run python tools/registry_gen.py"
+    assert REGISTRY_FILE.exists(), (
+        "registry.json not found — run: uv run python tools/registry_gen.py"
+    )
 
 
 def test_registry_is_valid_json() -> None:
@@ -80,7 +79,9 @@ def test_build_registry_includes_all_skills() -> None:
     """build_registry() must include every skill in skills/."""
     skill_files = {p.stem for p in SKILLS_DIR.glob("*.md") if p.name.upper() != "README.MD"}
     registry = build_registry()
-    names = {e["name"] for e in registry["skills"]}  # type: ignore[union-attr]
+    skills_list = registry["skills"]
+    assert isinstance(skills_list, list)
+    names = {e["name"] for e in skills_list}
     assert skill_files == names
 
 
