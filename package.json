@@ -1,0 +1,16 @@
+{
+  "name": "agent-workshop",
+  "version": "0.1.0",
+  "description": "Staging ground for Claude Code meta-skills, agents, tools, and hooks",
+  "private": true,
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.0",
+    "typescript": "^5.4.0",
+    "@types/bun": "latest"
+  },
+  "scripts": {
+    "test": "bun test",
+    "lint": "bunx biome check --write .",
+    "typecheck": "tsc --noEmit"
+  }
+}

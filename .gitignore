@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+env/
+.env
+*.so
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# uv
+uv.lock
+
+# Node / Bun
+node_modules/
+.bun/
+bun.lockb
+dist/
+*.tsbuildinfo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Experiments output (keep sources, ignore run artifacts)
+experiments/**/__pycache__/
+experiments/**/output/
+experiments/**/results/
+experiments/**/*.log
