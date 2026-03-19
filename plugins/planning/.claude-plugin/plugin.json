@@ -1,0 +1,11 @@
+{
+  "name": "planning",
+  "description": "Produces phased implementation plans with explicit gates and validating tests at each checkpoint.",
+  "version": "1.0.0",
+  "author": {
+    "name": "ats-kinoshita-iso"
+  },
+  "repository": "https://github.com/ats-kinoshita-iso/agent-workshop",
+  "license": "MIT",
+  "keywords": ["planning", "architecture", "gates", "testing"]
+}

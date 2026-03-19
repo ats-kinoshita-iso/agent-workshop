@@ -1,0 +1,14 @@
+{
+  "name": "agent-workshop",
+  "owner": {
+    "name": "ats-kinoshita-iso"
+  },
+  "plugins": [
+    {
+      "name": "planning",
+      "source": "./plugins/planning",
+      "description": "Produces phased implementation plans with explicit gates and validating tests at each checkpoint.",
+      "version": "1.0.0"
+    }
+  ]
+}

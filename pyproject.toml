@@ -1,7 +1,7 @@
 [project]
 name = "agent-workshop"
 version = "0.1.0"
-description = "Staging ground for Claude Code meta-skills, agents, tools, and hooks"
+description = "Plugin library and development framework for Claude Code"
 requires-python = ">=3.11"
 dependencies = ["anthropic>=0.40"]
 
@@ -21,14 +21,11 @@ addopts = "-v"
 
 [tool.ruff]
 line-length = 100
-exclude = ["experiments/"]
-
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM"]
 
 [tool.mypy]
 strict = true
-exclude = ["experiments/"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["tools"]

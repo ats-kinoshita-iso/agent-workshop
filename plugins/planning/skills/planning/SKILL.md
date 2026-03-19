@@ -1,10 +1,5 @@
 ---
-name: planning
-version: "1.0.0"
-trigger: "create an implementation plan with gates and tests for this task"
-description: "Produces a phased implementation plan with explicit gates and validating tests at each checkpoint."
-targets: []
-tags: ["planning", "architecture", "gates", "testing"]
+description: Create an implementation plan with gates and tests for this task
 ---
 
 Read the task description carefully. Then produce a phased implementation plan.
