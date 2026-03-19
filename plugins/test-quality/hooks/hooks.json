@@ -1,0 +1,10 @@
+{
+  "hooks": [
+    {
+      "event": "PostToolUse",
+      "matcher": "Write|Edit",
+      "type": "prompt",
+      "prompt": "A test file was just written or edited. If the changed file matches test patterns (test_*.py, *.test.ts, *.spec.ts), check that the test follows project conventions: proper naming, one logical assertion per test, appropriate use of fixtures, and no obvious anti-patterns like mocking the unit under test. If issues are found, note them briefly."
+    }
+  ]
+}

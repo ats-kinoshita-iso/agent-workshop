@@ -5,11 +5,41 @@
   },
   "plugins": [
     {
+      "name": "code-quality-gate",
+      "source": "./plugins/code-quality-gate",
+      "description": "Unified quality orchestrator that runs all project linters, formatters, type checkers, and tests as a single pass/fail gate.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "context-sync",
+      "source": "./plugins/context-sync",
+      "description": "Keeps CLAUDE.md files in sync with the actual codebase by detecting meaningful changes and proposing targeted updates.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "plan-manager",
+      "source": "./plugins/plan-manager",
+      "description": "Structured plan lifecycle management with automatic tracking, gate validation, and archival of implementation plans.",
+      "version": "1.0.0"
+    },
+    {
       "name": "planning",
       "source": "./plugins/planning",
       "description": "Produces phased implementation plans with explicit gates and validating tests at each checkpoint.",
       "version": "2.0.0"
+    },
+    {
+      "name": "test-quality",
+      "source": "./plugins/test-quality",
+      "description": "Test development and improvement system that tracks quality patterns and progressively improves the test suite.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "workspace-clean",
+      "source": "./plugins/workspace-clean",
+      "description": "Automated workspace hygiene checks that detect build artifacts, stale temp files, orphaned docs, and project-level clutter.",
+      "version": "1.0.0"
     }
   ],
-  "_generated_at": "2026-03-19T15:32:25.205106+00:00"
+  "_generated_at": "2026-03-19T15:45:30.473566+00:00"
 }

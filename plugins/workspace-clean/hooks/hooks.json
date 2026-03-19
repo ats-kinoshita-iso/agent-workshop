@@ -1,0 +1,9 @@
+{
+  "hooks": [
+    {
+      "event": "Stop",
+      "type": "command",
+      "command": "echo '--- Workspace Hygiene ---' && find . -name '__pycache__' -o -name '*.pyc' -o -name '.DS_Store' -o -name '*.tmp' -o -name '*.bak' 2>/dev/null | head -10 | wc -l | xargs -I{} echo '{} artifact(s) found'"
+    }
+  ]
+}
