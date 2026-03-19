@@ -30,6 +30,38 @@ def load_plugin_manifest(plugin_dir: Path) -> dict[str, object] | None:
     return json.loads(manifest_path.read_text(encoding="utf-8"))  # type: ignore[no-any-return]
 
 
+def load_existing_marketplace(path: Path) -> dict[str, object] | None:
+    """Load the current marketplace.json from disk, if it exists.
+
+    Args:
+        path: Path to marketplace.json.
+
+    Returns:
+        Parsed marketplace dict, or None if the file does not exist.
+    """
+    if not path.exists():
+        return None
+    return json.loads(path.read_text(encoding="utf-8"))  # type: ignore[no-any-return]
+
+
+def existing_plugin_names(path: Path) -> set[str]:
+    """Return the set of plugin names in the current marketplace.json.
+
+    Args:
+        path: Path to marketplace.json.
+
+    Returns:
+        Set of plugin name strings (empty if file is missing or unreadable).
+    """
+    existing = load_existing_marketplace(path)
+    if existing is None:
+        return set()
+    plugins = existing.get("plugins", [])
+    if not isinstance(plugins, list):
+        return set()
+    return {str(p.get("name", "")) for p in plugins if isinstance(p, dict)}
+
+
 def build_marketplace() -> dict[str, object]:
     """Scan plugins/ and return a marketplace dict.
 
@@ -62,6 +94,32 @@ def build_marketplace() -> dict[str, object]:
     }
 
 
+def check_plugin_drop(
+    new_marketplace: dict[str, object],
+    path: Path = MARKETPLACE_PATH,
+) -> list[str]:
+    """Return names of plugins that exist on disk but would be dropped.
+
+    Compares the new marketplace against the committed marketplace.json
+    to detect plugins present in the old file but absent from the new one.
+
+    Args:
+        new_marketplace: The freshly built marketplace dict.
+        path: Path to the existing marketplace.json.
+
+    Returns:
+        Sorted list of plugin names that would be removed.
+    """
+    old_names = existing_plugin_names(path)
+    if not old_names:
+        return []
+    new_plugins = new_marketplace.get("plugins", [])
+    if not isinstance(new_plugins, list):
+        return sorted(old_names)
+    new_names = {str(p.get("name", "")) for p in new_plugins if isinstance(p, dict)}
+    return sorted(old_names - new_names)
+
+
 def write_marketplace(
     marketplace: dict[str, object],
     path: Path = MARKETPLACE_PATH,
@@ -77,9 +135,33 @@ def write_marketplace(
 
 
 def main(argv: list[str] | None = None) -> int:
-    """CLI entry point — regenerate .claude-plugin/marketplace.json."""
+    """CLI entry point — regenerate .claude-plugin/marketplace.json.
+
+    Refuses to overwrite when plugins would be silently dropped, unless
+    --force is passed.  This prevents feature branches from accidentally
+    removing plugins that exist on the base branch but not locally.
+    """
+    args = argv if argv is not None else sys.argv[1:]
+    force = "--force" in args
+
     marketplace = build_marketplace()
-    write_marketplace(marketplace)
+    dropped = check_plugin_drop(marketplace, MARKETPLACE_PATH)
+
+    if dropped and not force:
+        print(
+            f"ERROR: Refusing to write marketplace.json — {len(dropped)} plugin(s) "
+            f"would be dropped: {', '.join(dropped)}",
+            file=sys.stderr,
+        )
+        print(
+            "This usually means your branch is missing plugins that exist on main.\n"
+            "Fix: rebase/merge main, then re-run this script.\n"
+            "Override: pass --force to write anyway.",
+            file=sys.stderr,
+        )
+        return 1
+
+    write_marketplace(marketplace, MARKETPLACE_PATH)
     n_plugins = len(marketplace["plugins"])  # type: ignore[arg-type]
     print(f"Marketplace updated: {n_plugins} plugin(s) → {MARKETPLACE_PATH}")
     return 0
