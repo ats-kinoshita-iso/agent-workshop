@@ -1,14 +1,65 @@
 ---
-description: Create an implementation plan with gates and tests for this task
+name: planning
+description: >-
+  Produces phased implementation plans with explicit pass/fail gates for
+  software tasks. This skill should be used when the user asks to "plan an
+  implementation", "create a phased plan", "break down this task", "design
+  an approach", "write an implementation plan", or any request that involves
+  decomposing a software change into ordered steps with validation criteria.
+  Use this skill even when the user simply says "plan this" or "how should
+  I implement this".
 ---
 
-Read the task description carefully. Then produce a phased implementation plan.
+## Step 1: Inspect the codebase
 
-For each phase:
-1. State what will be built
-2. Define a gate — a concrete, pass/fail criterion that must be met before the next phase begins
-3. Specify the tests or validation steps that prove the gate is met
+Before producing any plan, read relevant files to understand the current state:
 
-Keep each phase small enough to complete independently. Prefer phases that can be validated automatically (tests, linters, type checks) over manual checks.
+- Use Glob to find files related to the task (source files, tests, configs).
+- Use Grep to search for key terms, function names, or patterns from the task description.
+- Read the project's CLAUDE.md, README, CI config, and test setup if they exist.
+- Identify existing patterns, conventions, and constraints that the plan must respect.
 
-End with a summary table listing each phase, its gate criterion, and its validation method.
+Do not skip this step. Plans that ignore existing code produce wrong decompositions.
+
+## Step 2: Frame the problem
+
+State clearly:
+
+- **What** is being built or changed (one sentence).
+- **Why** it matters (the user need or technical motivation).
+- **What is out of scope** (explicit boundaries to prevent scope creep).
+- **Key constraints** discovered during inspection (existing patterns to follow, dependencies, CI requirements).
+
+## Step 3: Decompose into phases
+
+Break the work into 3–7 phases. Each phase must be:
+
+- Small enough to complete and validate independently.
+- A vertical slice delivering observable behavior — not a horizontal layer like "set up types" or "write interfaces".
+- Ordered so that each phase builds on the previous one.
+
+For each phase, specify:
+
+1. **Goal**: What this phase accomplishes (one sentence).
+2. **Gate criterion** in Given/When/Then format:
+   - Given [precondition or setup],
+   - When [action or command is run],
+   - Then [observable, binary outcome].
+3. **Validation command**: The exact command to run (e.g., `pytest tests/test_auth.py`, `ruff check src/`, `curl localhost:8000/health`). Prefer automated validation (tests, linters, type checkers) over manual inspection.
+
+Gates must not leak implementation details. Write them in terms of observable behavior, not class names or internal APIs. A gate like "AuthService class exists with login method" is bad. A gate like "Given valid credentials, when POST /login is called, then a 200 response with a token is returned" is good.
+
+## Step 4: Review the plan
+
+Before presenting the final plan, check each phase:
+
+- Is the gate truly binary (pass/fail with no ambiguity)?
+- Can the validation command run without human judgment?
+- Does the phase depend only on previously completed phases?
+- Are there any phases that could be merged or that are too large?
+
+Revise any phase that fails these checks before continuing.
+
+## Output format
+
+Present the plan using the template in [references/PLAN-TEMPLATE.md](references/PLAN-TEMPLATE.md).

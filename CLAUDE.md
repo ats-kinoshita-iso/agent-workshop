@@ -34,6 +34,21 @@ tools/                # Development & validation tooling
 tests/                # Plugin validation gates
 ```
 
+## Generated Files
+
+`.claude-plugin/marketplace.json` is **auto-generated** — never edit it by hand.
+
+- **Generator**: `tools/marketplace_gen.py` scans `plugins/` and writes the manifest.
+- **Hook**: The Stop hook runs the generator automatically at the end of each session.
+- **Conflict risk**: On a feature branch, the generator only sees plugins that exist locally.
+  If `main` has added new plugins since the branch diverged, the generated file will be
+  missing those entries and will cause a **merge conflict**.
+- **Prevention**: Before committing a regenerated `marketplace.json`, always rebase or merge
+  `main` so that all plugins are present locally. Run `uv run python tools/marketplace_gen.py`
+  **after** the rebase to produce the correct output.
+- **Rule**: Never commit a `marketplace.json` that lists fewer plugins than `main` does
+  unless you intentionally deleted a plugin.
+
 ## Plugin Format
 
 Each plugin lives in `plugins/<name>/` and follows the Claude Code plugin structure:
