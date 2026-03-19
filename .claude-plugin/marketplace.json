@@ -10,5 +10,6 @@
       "description": "Produces phased implementation plans with explicit gates and validating tests at each checkpoint.",
       "version": "1.0.0"
     }
-  ]
+  ],
+  "_generated_at": "2026-03-19T10:57:52.003942+00:00"
 }
