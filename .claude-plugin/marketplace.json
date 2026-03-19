@@ -8,8 +8,8 @@
       "name": "planning",
       "source": "./plugins/planning",
       "description": "Produces phased implementation plans with explicit gates and validating tests at each checkpoint.",
-      "version": "1.0.0"
+      "version": "2.0.0"
     }
   ],
-  "_generated_at": "2026-03-19T15:26:35.180100+00:00"
+  "_generated_at": "2026-03-19T15:32:25.205106+00:00"
 }
