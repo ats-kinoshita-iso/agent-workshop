@@ -1,0 +1,9 @@
+{
+  "hooks": [
+    {
+      "event": "Stop",
+      "type": "prompt",
+      "prompt": "If a plans/active/ directory exists, scan all active plans and check their gate status. For each plan, count completed ([x]) vs uncompleted ([ ]) items. Update plans/registry.json with current gate counts and last_updated timestamps. Report any plans that are fully complete and ready for archival."
+    }
+  ]
+}

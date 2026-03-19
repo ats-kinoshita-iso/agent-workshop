@@ -1,0 +1,11 @@
+{
+  "name": "plan-manager",
+  "description": "Structured plan lifecycle management with automatic tracking, gate validation, and archival of implementation plans.",
+  "version": "1.0.0",
+  "author": {
+    "name": "ats-kinoshita-iso"
+  },
+  "repository": "https://github.com/ats-kinoshita-iso/agent-workshop",
+  "license": "MIT",
+  "keywords": ["planning", "lifecycle", "gates", "archival", "tracking"]
+}

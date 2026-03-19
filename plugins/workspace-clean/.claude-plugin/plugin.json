@@ -1,0 +1,11 @@
+{
+  "name": "workspace-clean",
+  "description": "Automated workspace hygiene checks that detect build artifacts, stale temp files, orphaned docs, and project-level clutter.",
+  "version": "1.0.0",
+  "author": {
+    "name": "ats-kinoshita-iso"
+  },
+  "repository": "https://github.com/ats-kinoshita-iso/agent-workshop",
+  "license": "MIT",
+  "keywords": ["hygiene", "cleanup", "artifacts", "workspace", "maintenance"]
+}

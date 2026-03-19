@@ -1,0 +1,11 @@
+{
+  "name": "test-quality",
+  "description": "Test development and improvement system that tracks quality patterns and progressively improves the test suite.",
+  "version": "1.0.0",
+  "author": {
+    "name": "ats-kinoshita-iso"
+  },
+  "repository": "https://github.com/ats-kinoshita-iso/agent-workshop",
+  "license": "MIT",
+  "keywords": ["testing", "quality", "coverage", "knowledge-base", "test-generation"]
+}

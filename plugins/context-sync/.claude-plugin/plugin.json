@@ -1,0 +1,11 @@
+{
+  "name": "context-sync",
+  "description": "Keeps CLAUDE.md files in sync with the actual codebase by detecting meaningful changes and proposing targeted updates.",
+  "version": "1.0.0",
+  "author": {
+    "name": "ats-kinoshita-iso"
+  },
+  "repository": "https://github.com/ats-kinoshita-iso/agent-workshop",
+  "license": "MIT",
+  "keywords": ["claude-md", "context", "sync", "documentation", "maintenance"]
+}

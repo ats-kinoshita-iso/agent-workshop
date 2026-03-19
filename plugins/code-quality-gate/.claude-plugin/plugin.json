@@ -1,0 +1,11 @@
+{
+  "name": "code-quality-gate",
+  "description": "Unified quality orchestrator that runs all project linters, formatters, type checkers, and tests as a single pass/fail gate.",
+  "version": "1.0.0",
+  "author": {
+    "name": "ats-kinoshita-iso"
+  },
+  "repository": "https://github.com/ats-kinoshita-iso/agent-workshop",
+  "license": "MIT",
+  "keywords": ["quality", "lint", "format", "typecheck", "testing", "gate"]
+}
