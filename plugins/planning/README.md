@@ -1,6 +1,6 @@
 # planning
 
-Produces phased implementation plans with explicit gates and validating tests at each checkpoint.
+Produces phased implementation plans with explicit pass/fail gates and automated validation steps.
 
 ## Install
 
@@ -22,8 +22,14 @@ You can also invoke it directly:
 
 When triggered, Claude Code will:
 
-1. Read your task description
-2. Break it into small, independently completable phases
-3. Define a pass/fail gate for each phase
-4. Specify tests or validation steps to prove each gate is met
-5. Produce a summary table of phases, gates, and validation methods
+1. **Inspect the codebase** — reads relevant files, tests, and CI config to ground the plan in reality
+2. **Frame the problem** — states what is being built, why, what is out of scope, and key constraints
+3. **Decompose into phases** — breaks work into 3–7 small, independently completable vertical slices
+4. **Define gates** — each phase has a Given/When/Then acceptance criterion and an exact validation command
+5. **Self-review** — checks every gate is binary and automatable before presenting the plan
+
+## Output Format
+
+Each plan includes a problem statement, per-phase goals and gates, a summary table, and a risks/open questions section.
+
+Gates use Given/When/Then format and reference observable behavior — not internal class names or implementation details.
