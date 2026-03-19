@@ -1,6 +1,6 @@
 # agent-workshop
 
-A testing ground for Claude Code agents, skills, tools, and agentic experiments.
+A plugin library and development framework for Claude Code.
 
 ## Stack
 
@@ -24,11 +24,33 @@ A testing ground for Claude Code agents, skills, tools, and agentic experiments.
 ## Directory Structure
 
 ```
-agents/       # Claude agent implementations
-skills/       # Claude Code skill definitions
-tools/        # Reusable tool implementations
-experiments/  # Scratch space — excluded from lint, type checks, and tests
-tests/        # Test suite — mirrors top-level structure (tests/agents/, tests/tools/, etc.)
+.claude-plugin/       # Marketplace definition (marketplace.json)
+plugins/              # Stable, packaged Claude Code plugins
+cookbook/              # Golden baseline configs (copy into your projects)
+  claude-md/          #   CLAUDE.md templates
+  hooks/              #   Hook recipes
+  mcp/                #   MCP server configs
+tools/                # Development & validation tooling
+tests/                # Plugin validation gates
+```
+
+## Plugin Format
+
+Each plugin lives in `plugins/<name>/` and follows the Claude Code plugin structure:
+
+```
+plugins/<name>/
+├── .claude-plugin/
+│   └── plugin.json         # Required: name, description, version, keywords
+├── skills/                 # Optional: Agent Skills
+│   └── <skill-name>/
+│       └── SKILL.md        # Skill prompt with YAML frontmatter (description field)
+├── commands/               # Optional: Slash commands
+├── agents/                 # Optional: Custom subagents
+├── hooks/                  # Optional: Event handlers
+│   └── hooks.json
+├── .mcp.json               # Optional: MCP server configs
+└── README.md
 ```
 
 ## Code Style
@@ -40,10 +62,8 @@ tests/        # Test suite — mirrors top-level structure (tests/agents/, tests
 - Naming: `snake_case` for functions/variables, `PascalCase` for classes, `SCREAMING_SNAKE_CASE` for constants
 - Mypy runs in strict mode (`--strict`) — no untyped code
 - Ruff is authoritative — do not suppress lint errors without justification
-- `experiments/` is excluded from ruff, mypy, and pytest
 
 ### JS/TS
 - TypeScript preferred over plain JS for all non-trivial files
 - Max line length: 100 characters
 - Biome is authoritative for formatting and linting
-- `experiments/` is excluded from biome and bun test

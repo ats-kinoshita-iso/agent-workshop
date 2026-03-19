@@ -1,4 +1,4 @@
-"""Gate 1 eval: every skill in skills/ has valid frontmatter."""
+"""Unit tests for the skill loader (tools/skill_loader.py)."""
 
 from __future__ import annotations
 
@@ -11,48 +11,8 @@ from tools.skill_loader import (
     REQUIRED_FIELDS,
     Skill,
     SkillValidationError,
-    load_skills_dir,
     parse_skill,
 )
-
-SKILLS_DIR = Path(__file__).parent.parent.parent / "skills"
-
-
-# ---------------------------------------------------------------------------
-# Gate 1 eval: real skills directory
-# ---------------------------------------------------------------------------
-
-
-def test_skills_dir_exists() -> None:
-    """The skills/ directory must exist."""
-    assert SKILLS_DIR.is_dir(), f"skills/ directory not found at {SKILLS_DIR}"
-
-
-def test_all_skills_valid() -> None:
-    """Every .md file in skills/ (except README) must pass validation."""
-    skill_files = [p for p in SKILLS_DIR.glob("*.md") if p.name.upper() != "README.MD"]
-    assert skill_files, "No skill files found in skills/ — add at least one"
-    skills = load_skills_dir(SKILLS_DIR)
-    assert len(skills) == len(skill_files)
-
-
-def test_hello_world_skill_fields() -> None:
-    """The hello-world reference skill must have all required fields populated."""
-    skill_path = SKILLS_DIR / "hello-world.md"
-    assert skill_path.exists(), "hello-world.md reference skill is missing"
-    skill = parse_skill(skill_path)
-    assert skill.name == "hello-world"
-    assert skill.body, "skill body must not be empty"
-    for attr in ("name", "version", "trigger", "description"):
-        assert getattr(skill, attr), f"field '{attr}' must not be empty"
-
-
-def test_skill_names_are_unique() -> None:
-    """No two skills may share the same name."""
-    skills = load_skills_dir(SKILLS_DIR)
-    names = [s.name for s in skills]
-    assert len(names) == len(set(names)), f"Duplicate skill names: {names}"
-
 
 # ---------------------------------------------------------------------------
 # Unit tests for the loader itself

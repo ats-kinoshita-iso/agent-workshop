@@ -19,7 +19,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cd /home/user/agent-workshop && uv run python tools/registry_gen.py 2>/dev/null || true"
+            "command": "cd /home/user/agent-workshop && uv run python tools/marketplace_gen.py 2>/dev/null || true"
           }
         ]
       }
