@@ -1,0 +1,17 @@
+{
+  "name": "memory-manager",
+  "description": "Skills for persistent memory across Claude Code sessions: initialize a memory file, recall relevant context for the current task, and persist session learnings.",
+  "version": "1.0.0",
+  "author": {
+    "name": "agent-workshop"
+  },
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skill",
+    "memory",
+    "context",
+    "persistence",
+    "sessions"
+  ]
+}

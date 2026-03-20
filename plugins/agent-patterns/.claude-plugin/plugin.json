@@ -1,0 +1,17 @@
+{
+  "name": "agent-patterns",
+  "description": "Skills for designing and evaluating multi-agent systems: orchestrator/worker decomposition, output quality review, and self-improving evaluator/optimizer loops.",
+  "version": "1.0.0",
+  "author": {
+    "name": "agent-workshop"
+  },
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skill",
+    "agent",
+    "orchestrator",
+    "evaluator",
+    "multi-agent"
+  ]
+}

@@ -163,7 +163,7 @@ def main(argv: list[str] | None = None) -> int:
 
     write_marketplace(marketplace, MARKETPLACE_PATH)
     n_plugins = len(marketplace["plugins"])  # type: ignore[arg-type]
-    print(f"Marketplace updated: {n_plugins} plugin(s) → {MARKETPLACE_PATH}")
+    print(f"Marketplace updated: {n_plugins} plugin(s) -> {MARKETPLACE_PATH}")
     return 0
 
 

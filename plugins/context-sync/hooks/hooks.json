@@ -4,12 +4,12 @@
       "event": "PostToolUse",
       "matcher": "Write|Edit",
       "type": "prompt",
-      "prompt": "A file was just written or edited. If this change introduces a new pattern, convention, or structural change in a directory that contains a CLAUDE.md, make a note of it. Do NOT edit the CLAUDE.md now — just remember the observation for the session-end review."
+      "prompt": "A file was just written or edited. If this change introduces a new pattern, convention, or structural change in a directory that contains a CLAUDE.md, make a note of it. Do NOT edit the CLAUDE.md now -- just remember the observation for the session-end review. Also append a one-line drift event to context-sync.log in the format: [ISO-timestamp] DRIFT file=<path> reason=<brief reason>"
     },
     {
       "event": "Stop",
       "type": "prompt",
-      "prompt": "Review all files modified during this session. For each directory containing a CLAUDE.md, check whether the modifications introduced patterns, conventions, or structural changes not yet documented. If updates are needed, propose a minimal patch to the relevant CLAUDE.md file(s). Present the diff and ask for confirmation before applying."
+      "prompt": "Review all files modified during this session. For each directory containing a CLAUDE.md, check whether the modifications introduced patterns, conventions, or structural changes not yet documented. If updates are needed, propose a minimal patch to the relevant CLAUDE.md file(s). Present the diff and ask for confirmation before applying. After any CLAUDE.md update, append a one-line sync event to context-sync.log in the format: [ISO-timestamp] SYNC file=<CLAUDE.md path> changes=<count> reason=<brief summary>"
     }
   ]
 }

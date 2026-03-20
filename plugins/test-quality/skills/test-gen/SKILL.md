@@ -4,7 +4,8 @@ description: >-
   Generate tests for a specified module using project conventions. Use this skill
   when the user asks to "write tests for", "generate tests", "add test coverage",
   "test this module", or any request to create new test files following the
-  project's existing patterns, fixtures, and assertion style.
+  project's existing patterns, fixtures, and assertion style. Optionally generates
+  an eval suite if the eval-framework plugin is installed.
 ---
 
 Generate tests for the module or file specified by the user. Steps:
@@ -23,3 +24,39 @@ Follow the project's test conventions strictly. Place the test file in the corre
 directory following existing patterns.
 
 Present the generated tests for review before writing them.
+
+## Optional: Eval suite generation
+
+If the **eval-framework** plugin is installed, you may also generate an eval suite
+for agent skills or pipeline components (not just unit tests).
+
+To generate an eval suite, ask: "Also generate an eval suite" or "include evals".
+
+An eval suite differs from unit tests:
+- Unit tests: deterministic input/output assertions (`assert result == expected`)
+- Eval suite: scored outputs with criteria-based scoring (`score >= threshold`)
+
+When generating an eval suite (`evals/<module>_eval.py`):
+1. Define 3-5 representative input scenarios covering normal and edge cases
+2. For each scenario, specify scoring criteria (not exact expected output)
+3. Use the eval-framework's `score_output()` helper to evaluate model responses
+4. Set a pass threshold (default: 0.8) for each eval case
+
+Eval suite template (requires eval-framework plugin):
+```python
+# evals/<module>_eval.py
+from eval_framework import EvalCase, score_output
+
+EVAL_CASES = [
+    EvalCase(
+        name="<scenario name>",
+        input="<scenario input>",
+        criteria=["<criterion 1>", "<criterion 2>"],
+        threshold=0.8,
+    ),
+    # ... more cases
+]
+```
+
+Only generate eval suites for skills, agents, or pipeline components -- not for
+pure utility functions (use unit tests for those).

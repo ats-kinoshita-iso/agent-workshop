@@ -5,6 +5,12 @@
   },
   "plugins": [
     {
+      "name": "agent-patterns",
+      "source": "./plugins/agent-patterns",
+      "description": "Skills for designing and evaluating multi-agent systems: orchestrator/worker decomposition, output quality review, and self-improving evaluator/optimizer loops.",
+      "version": "1.0.0"
+    },
+    {
       "name": "anthropic-creative-skills",
       "source": "./plugins/anthropic-creative-skills",
       "description": "Anthropic's official creative and design skills for generative art, frontend design, visual themes, Slack GIFs, and brand-consistent styling.",
@@ -32,12 +38,18 @@
       "name": "code-quality-gate",
       "source": "./plugins/code-quality-gate",
       "description": "Unified quality orchestrator that runs all project linters, formatters, type checkers, and tests as a single pass/fail gate.",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     {
       "name": "context-sync",
       "source": "./plugins/context-sync",
       "description": "Keeps CLAUDE.md files in sync with the actual codebase by detecting meaningful changes and proposing targeted updates.",
+      "version": "1.1.0"
+    },
+    {
+      "name": "memory-manager",
+      "source": "./plugins/memory-manager",
+      "description": "Skills for persistent memory across Claude Code sessions: initialize a memory file, recall relevant context for the current task, and persist session learnings.",
       "version": "1.0.0"
     },
     {
@@ -50,13 +62,13 @@
       "name": "planning",
       "source": "./plugins/planning",
       "description": "Produces phased implementation plans with explicit gates and validating tests at each checkpoint.",
-      "version": "2.0.0"
+      "version": "2.1.0"
     },
     {
       "name": "test-quality",
       "source": "./plugins/test-quality",
       "description": "Test development and improvement system that tracks quality patterns and progressively improves the test suite.",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     {
       "name": "workspace-clean",
@@ -65,5 +77,5 @@
       "version": "1.0.0"
     }
   ],
-  "_generated_at": "2026-03-20T03:38:25.753940+00:00"
+  "_generated_at": "2026-03-20T05:58:08.754099+00:00"
 }
