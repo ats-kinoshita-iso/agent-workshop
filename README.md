@@ -53,9 +53,25 @@ tests/                # Plugin validation gates
 
 ## Available Plugins
 
+### Workshop Plugins
+
 | Plugin | Description | Version |
 |--------|-------------|---------|
-| [planning](plugins/planning/) | Phased implementation plans with gates and tests | 1.0.0 |
+| [code-quality-gate](plugins/code-quality-gate/) | Unified quality orchestrator (lint, format, typecheck, test) | 1.0.0 |
+| [context-sync](plugins/context-sync/) | Keeps CLAUDE.md files in sync with the codebase | 1.0.0 |
+| [plan-manager](plugins/plan-manager/) | Plan lifecycle management with gate tracking and archival | 1.0.0 |
+| [planning](plugins/planning/) | Phased implementation plans with gates and tests | 2.0.0 |
+| [test-quality](plugins/test-quality/) | Test generation, auditing, and knowledge extraction | 1.0.0 |
+| [workspace-clean](plugins/workspace-clean/) | Workspace hygiene checks and cleanup | 1.0.0 |
+
+### Anthropic Skills (imported from [anthropics/skills](https://github.com/anthropics/skills))
+
+| Plugin | Skills | License |
+|--------|--------|---------|
+| [anthropic-document-skills](plugins/anthropic-document-skills/) | docx, pdf, pptx, xlsx | Source-available |
+| [anthropic-creative-skills](plugins/anthropic-creative-skills/) | algorithmic-art, brand-guidelines, canvas-design, frontend-design, slack-gif-creator, theme-factory | Apache 2.0 |
+| [anthropic-dev-skills](plugins/anthropic-dev-skills/) | claude-api, mcp-builder, skill-creator, web-artifacts-builder, webapp-testing | Apache 2.0 |
+| [anthropic-enterprise-skills](plugins/anthropic-enterprise-skills/) | doc-coauthoring, internal-comms | Apache 2.0 |
 
 ## Stack
 

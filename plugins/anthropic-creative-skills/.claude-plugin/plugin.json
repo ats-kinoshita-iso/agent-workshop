@@ -1,0 +1,11 @@
+{
+  "name": "anthropic-creative-skills",
+  "description": "Anthropic's official creative and design skills for generative art, frontend design, visual themes, Slack GIFs, and brand-consistent styling.",
+  "version": "1.0.0",
+  "author": {
+    "name": "anthropic"
+  },
+  "repository": "https://github.com/anthropics/skills",
+  "license": "Apache-2.0",
+  "keywords": ["creative", "design", "art", "frontend", "themes", "gif", "anthropic"]
+}

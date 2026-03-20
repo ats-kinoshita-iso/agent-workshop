@@ -126,6 +126,20 @@ All skill descriptions were rewritten to follow Anthropic's trigger-aware style:
 - Added `references/` directories to skills that benefit from supporting docs.
 - Skills reference Claude Code tools by name where appropriate.
 
+### Full Skill Import (Phase 2)
+
+All 17 skills from `anthropics/skills` were imported into 4 plugin bundles:
+
+| Plugin | Skills | Files |
+|--------|--------|-------|
+| `anthropic-document-skills` | docx, pdf, pptx, xlsx | ~186 files (scripts, schemas, templates) |
+| `anthropic-creative-skills` | algorithmic-art, brand-guidelines, canvas-design, frontend-design, slack-gif-creator, theme-factory | ~111 files (fonts, themes, core libs) |
+| `anthropic-dev-skills` | claude-api, mcp-builder, skill-creator, web-artifacts-builder, webapp-testing | ~65 files (references, agents, scripts) |
+| `anthropic-enterprise-skills` | doc-coauthoring, internal-comms | ~7 files (examples) |
+
+Upstream Python scripts/examples are excluded from ruff and mypy checks via
+`pyproject.toml` exclude patterns to avoid modifying Anthropic's code.
+
 ## Related Resources
 
 - [What are skills?](https://support.claude.com/en/articles/12512176-what-are-skills)

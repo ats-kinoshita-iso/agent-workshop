@@ -1,0 +1,11 @@
+{
+  "name": "anthropic-enterprise-skills",
+  "description": "Anthropic's official enterprise communication skills for co-authoring documentation and writing internal communications like status reports, newsletters, and FAQs.",
+  "version": "1.0.0",
+  "author": {
+    "name": "anthropic"
+  },
+  "repository": "https://github.com/anthropics/skills",
+  "license": "Apache-2.0",
+  "keywords": ["enterprise", "communications", "documentation", "coauthoring", "anthropic"]
+}

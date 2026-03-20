@@ -1,0 +1,11 @@
+{
+  "name": "anthropic-dev-skills",
+  "description": "Anthropic's official development skills for Claude API integration, MCP server building, skill creation, web artifact building, and browser-based testing.",
+  "version": "1.0.0",
+  "author": {
+    "name": "anthropic"
+  },
+  "repository": "https://github.com/anthropics/skills",
+  "license": "Apache-2.0",
+  "keywords": ["development", "claude-api", "mcp", "testing", "artifacts", "anthropic"]
+}

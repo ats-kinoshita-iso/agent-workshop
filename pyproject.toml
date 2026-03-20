@@ -21,11 +21,25 @@ addopts = "-v"
 
 [tool.ruff]
 line-length = 100
+# Exclude imported Anthropic skill scripts — upstream code we don't modify.
+exclude = [
+    "plugins/anthropic-*/skills/*/scripts/**",
+    "plugins/anthropic-*/skills/*/core/**",
+    "plugins/anthropic-*/skills/*/eval-viewer/**",
+    "plugins/anthropic-*/skills/*/examples/**",
+]
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM"]
 
 [tool.mypy]
 strict = true
+# Exclude imported Anthropic skill scripts from type checking.
+exclude = [
+    "plugins/anthropic-.*/skills/.*/scripts/",
+    "plugins/anthropic-.*/skills/.*/core/",
+    "plugins/anthropic-.*/skills/.*/eval-viewer/",
+    "plugins/anthropic-.*/skills/.*/examples/",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["tools"]
