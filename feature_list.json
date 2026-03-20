@@ -1,0 +1,387 @@
+[
+  {
+    "id": 1,
+    "phase": "config",
+    "description": "Create ~/.claude/CLAUDE.md with high-autonomy, plan-first global instructions covering tool preferences (uv/bun/gh), response style, and proactiveness rules",
+    "verification": [
+      "Step 1: Check file exists at C:\\Users\\akino\\.claude\\CLAUDE.md",
+      "Step 2: Verify 'plan-first' or 'plan first' content is present",
+      "Step 3: Verify uv and bun tool preferences are specified"
+    ],
+    "passes": false
+  },
+  {
+    "id": 2,
+    "phase": "config",
+    "description": "Create ~/.claude/hooks/ directory and post-edit.sh that auto-lints/formats on file edit (detects .py vs .ts/.js and runs ruff or biome accordingly)",
+    "verification": [
+      "Step 1: Check directory exists at C:\\Users\\akino\\.claude\\hooks\\",
+      "Step 2: Check file exists at C:\\Users\\akino\\.claude\\hooks\\post-edit.sh",
+      "Step 3: Verify the script contains ruff and biome references"
+    ],
+    "passes": false
+  },
+  {
+    "id": 3,
+    "phase": "config",
+    "description": "Create ~/.claude/hooks/stop-doc-update.sh that blocks stop if source files changed but no docs were updated this session",
+    "verification": [
+      "Step 1: Check file exists at C:\\Users\\akino\\.claude\\hooks\\stop-doc-update.sh",
+      "Step 2: Verify script checks for source changes vs doc changes",
+      "Step 3: Verify script exits non-zero to block when docs are stale"
+    ],
+    "passes": false
+  },
+  {
+    "id": 4,
+    "phase": "config",
+    "description": "Update ~/.claude/settings.json with global permissions (git, uv, bun, gh, ls, find, mkdir, cp, mv, python, node) and hooks registered (PostToolUse post-edit.sh, Stop stop-doc-update.sh)",
+    "verification": [
+      "Step 1: Read C:\\Users\\akino\\.claude\\settings.json",
+      "Step 2: Verify permissions allow list includes uv, bun, git, gh entries",
+      "Step 3: Verify hooks section references post-edit.sh and stop-doc-update.sh"
+    ],
+    "passes": false
+  },
+  {
+    "id": 5,
+    "phase": "config",
+    "description": "Create ~/.claude/commands/commit.md with /commit slash command instructions for smart conventional commits (feat/fix/chore/docs prefix, scope detection, body summary)",
+    "verification": [
+      "Step 1: Check directory exists at C:\\Users\\akino\\.claude\\commands\\",
+      "Step 2: Check file exists at C:\\Users\\akino\\.claude\\commands\\commit.md",
+      "Step 3: Verify file contains conventional commit format instructions"
+    ],
+    "passes": false
+  },
+  {
+    "id": 6,
+    "phase": "cookbook",
+    "description": "Create cookbook/claude-md/python.md — complete drop-in CLAUDE.md template for Python projects using uv + ruff + mypy + pytest stack",
+    "verification": [
+      "Step 1: Check file exists at cookbook/claude-md/python.md",
+      "Step 2: Verify file contains uv, ruff, mypy, pytest references",
+      "Step 3: Verify file has 'When to use', template block, and 'Customization' sections"
+    ],
+    "passes": false
+  },
+  {
+    "id": 7,
+    "phase": "cookbook",
+    "description": "Create cookbook/claude-md/typescript.md — complete drop-in CLAUDE.md template for TypeScript projects using bun + biome + tsc stack",
+    "verification": [
+      "Step 1: Check file exists at cookbook/claude-md/typescript.md",
+      "Step 2: Verify file contains bun, biome, tsc references",
+      "Step 3: Verify file has 'When to use', template block, and 'Customization' sections"
+    ],
+    "passes": false
+  },
+  {
+    "id": 8,
+    "phase": "cookbook",
+    "description": "Create cookbook/claude-md/fullstack.md — CLAUDE.md template for Python backend + TypeScript frontend projects with both stacks documented",
+    "verification": [
+      "Step 1: Check file exists at cookbook/claude-md/fullstack.md",
+      "Step 2: Verify file references both Python (uv/ruff) and TypeScript (bun/biome) stacks",
+      "Step 3: Verify file has combined stack commands section"
+    ],
+    "passes": false
+  },
+  {
+    "id": 9,
+    "phase": "cookbook",
+    "description": "Create cookbook/claude-md/minimal.md — language-agnostic minimal CLAUDE.md starter with just the essentials (autonomy, style, git hygiene)",
+    "verification": [
+      "Step 1: Check file exists at cookbook/claude-md/minimal.md",
+      "Step 2: Verify file is concise (under 60 lines) and language-agnostic",
+      "Step 3: Verify file covers autonomy and commit format at minimum"
+    ],
+    "passes": false
+  },
+  {
+    "id": 10,
+    "phase": "cookbook",
+    "description": "Create cookbook/claude-md/agent.md — CLAUDE.md template for agentic projects using Claude SDK, covering agent patterns, memory, and evaluation patterns",
+    "verification": [
+      "Step 1: Check file exists at cookbook/claude-md/agent.md",
+      "Step 2: Verify file references Claude SDK / anthropic SDK",
+      "Step 3: Verify file covers agent-specific patterns (orchestrator, memory, loops)"
+    ],
+    "passes": false
+  },
+  {
+    "id": 11,
+    "phase": "cookbook",
+    "description": "Create cookbook/hooks/auto-lint.md — PostToolUse hook recipe for auto-linting on Edit|Write, with settings.json snippet running ruff (Python) or biome (TS/JS)",
+    "verification": [
+      "Step 1: Check file exists at cookbook/hooks/auto-lint.md",
+      "Step 2: Verify file contains a settings.json code block with PostToolUse hook",
+      "Step 3: Verify hook command references ruff and/or biome"
+    ],
+    "passes": false
+  },
+  {
+    "id": 12,
+    "phase": "cookbook",
+    "description": "Create cookbook/hooks/auto-format.md — PostToolUse hook recipe for auto-formatting on Edit|Write, with settings.json snippet running formatter on the edited file",
+    "verification": [
+      "Step 1: Check file exists at cookbook/hooks/auto-format.md",
+      "Step 2: Verify file contains a settings.json code block with PostToolUse hook",
+      "Step 3: Verify hook distinguishes Python vs TypeScript formatting"
+    ],
+    "passes": false
+  },
+  {
+    "id": 13,
+    "phase": "cookbook",
+    "description": "Create cookbook/hooks/commit-gate.md — PreToolUse hook recipe blocking git commit if quality checks (lint + tests) fail, with settings.json snippet",
+    "verification": [
+      "Step 1: Check file exists at cookbook/hooks/commit-gate.md",
+      "Step 2: Verify file contains a settings.json code block with PreToolUse hook",
+      "Step 3: Verify hook matcher targets Bash(git commit*)"
+    ],
+    "passes": false
+  },
+  {
+    "id": 14,
+    "phase": "cookbook",
+    "description": "Create cookbook/hooks/test-runner.md — PostToolUse hook recipe running tests automatically when test files are edited, with settings.json snippet",
+    "verification": [
+      "Step 1: Check file exists at cookbook/hooks/test-runner.md",
+      "Step 2: Verify file contains a settings.json code block with PostToolUse hook",
+      "Step 3: Verify hook detects test file paths (test_*.py or *.test.ts patterns)"
+    ],
+    "passes": false
+  },
+  {
+    "id": 15,
+    "phase": "cookbook",
+    "description": "Create cookbook/hooks/doc-updater.md — Stop hook recipe blocking session end if source files changed but no docs (*.md) were updated, with settings.json snippet",
+    "verification": [
+      "Step 1: Check file exists at cookbook/hooks/doc-updater.md",
+      "Step 2: Verify file contains a settings.json code block with Stop hook",
+      "Step 3: Verify hook explanation covers source-changed-but-docs-stale detection"
+    ],
+    "passes": false
+  },
+  {
+    "id": 16,
+    "phase": "cookbook",
+    "description": "Create cookbook/hooks/marketplace-sync.md — Stop hook recipe regenerating marketplace.json at session end via tools/marketplace_gen.py, with settings.json snippet",
+    "verification": [
+      "Step 1: Check file exists at cookbook/hooks/marketplace-sync.md",
+      "Step 2: Verify file contains a settings.json code block with Stop hook",
+      "Step 3: Verify hook command runs marketplace_gen.py"
+    ],
+    "passes": false
+  },
+  {
+    "id": 17,
+    "phase": "cookbook",
+    "description": "Create cookbook/mcp/github.md — GitHub MCP server .mcp.json snippet for issues, PRs, and repo access, with When-to-use and Customization sections",
+    "verification": [
+      "Step 1: Check file exists at cookbook/mcp/github.md",
+      "Step 2: Verify file contains a .mcp.json code block with GitHub server config",
+      "Step 3: Verify file has When-to-use and Customization sections"
+    ],
+    "passes": false
+  },
+  {
+    "id": 18,
+    "phase": "cookbook",
+    "description": "Create cookbook/mcp/sqlite.md — SQLite MCP server .mcp.json snippet for local database access, with When-to-use and Customization sections",
+    "verification": [
+      "Step 1: Check file exists at cookbook/mcp/sqlite.md",
+      "Step 2: Verify file contains a .mcp.json code block with sqlite server config",
+      "Step 3: Verify file explains database path configuration"
+    ],
+    "passes": false
+  },
+  {
+    "id": 19,
+    "phase": "cookbook",
+    "description": "Create cookbook/mcp/filesystem.md — Extended filesystem MCP server .mcp.json snippet for additional directory access beyond project root",
+    "verification": [
+      "Step 1: Check file exists at cookbook/mcp/filesystem.md",
+      "Step 2: Verify file contains a .mcp.json code block with filesystem server config",
+      "Step 3: Verify file explains roots/allowed-paths configuration"
+    ],
+    "passes": false
+  },
+  {
+    "id": 20,
+    "phase": "cookbook",
+    "description": "Create cookbook/mcp/anthropic-cookbook.md — .mcp.json snippet to expose anthropic-cookbook repo as an MCP resource for in-context pattern reference",
+    "verification": [
+      "Step 1: Check file exists at cookbook/mcp/anthropic-cookbook.md",
+      "Step 2: Verify file contains a .mcp.json code block referencing anthropic-cookbook",
+      "Step 3: Verify file explains what patterns become available"
+    ],
+    "passes": false
+  },
+  {
+    "id": 21,
+    "phase": "plugin",
+    "description": "Create plugins/agent-patterns/ scaffold: .claude-plugin/plugin.json (name, description, version 1.0.0, keywords) and README.md describing the three skills",
+    "verification": [
+      "Step 1: Check plugins/agent-patterns/.claude-plugin/plugin.json exists and is valid JSON",
+      "Step 2: Verify plugin.json has name=agent-patterns, version=1.0.0",
+      "Step 3: Check plugins/agent-patterns/README.md exists"
+    ],
+    "passes": false
+  },
+  {
+    "id": 22,
+    "phase": "plugin",
+    "description": "Create plugins/agent-patterns/skills/agent-plan/SKILL.md — skill for decomposing a task into orchestrator + worker subtasks (no frontmatter, plain markdown body)",
+    "verification": [
+      "Step 1: Check file exists at plugins/agent-patterns/skills/agent-plan/SKILL.md",
+      "Step 2: Verify file starts with # (heading) not --- (no frontmatter)",
+      "Step 3: Verify file contains Instructions section with orchestrator/worker decomposition steps"
+    ],
+    "passes": false
+  },
+  {
+    "id": 23,
+    "phase": "plugin",
+    "description": "Create plugins/agent-patterns/skills/agent-review/SKILL.md — skill for evaluating agent output quality and suggesting improvements (no frontmatter)",
+    "verification": [
+      "Step 1: Check file exists at plugins/agent-patterns/skills/agent-review/SKILL.md",
+      "Step 2: Verify file starts with # (heading) not --- (no frontmatter)",
+      "Step 3: Verify file contains evaluation criteria and improvement suggestion steps"
+    ],
+    "passes": false
+  },
+  {
+    "id": 24,
+    "phase": "plugin",
+    "description": "Create plugins/agent-patterns/skills/agent-loop/SKILL.md — skill for setting up a self-improving evaluator/optimizer loop (no frontmatter)",
+    "verification": [
+      "Step 1: Check file exists at plugins/agent-patterns/skills/agent-loop/SKILL.md",
+      "Step 2: Verify file starts with # (heading) not --- (no frontmatter)",
+      "Step 3: Verify file describes loop structure (generate → evaluate → improve → repeat)"
+    ],
+    "passes": false
+  },
+  {
+    "id": 25,
+    "phase": "plugin",
+    "description": "Run tools/marketplace_gen.py and verify agent-patterns appears in .claude-plugin/marketplace.json; all plugin structure tests pass",
+    "verification": [
+      "Step 1: Run: uv run python tools/marketplace_gen.py",
+      "Step 2: Check .claude-plugin/marketplace.json contains agent-patterns entry",
+      "Step 3: Run: uv run pytest tests/plugins/ tests/tools/ -v and verify exit 0"
+    ],
+    "passes": false
+  },
+  {
+    "id": 26,
+    "phase": "plugin",
+    "description": "Create plugins/memory-manager/ scaffold: .claude-plugin/plugin.json (version 1.0.0) and README.md describing memory-init, memory-recall, memory-update skills",
+    "verification": [
+      "Step 1: Check plugins/memory-manager/.claude-plugin/plugin.json exists and is valid JSON",
+      "Step 2: Verify plugin.json has name=memory-manager, version=1.0.0",
+      "Step 3: Check plugins/memory-manager/README.md exists"
+    ],
+    "passes": false
+  },
+  {
+    "id": 27,
+    "phase": "plugin",
+    "description": "Create plugins/memory-manager/skills/memory-init/SKILL.md — skill for initializing a memory.json file for a project (no frontmatter)",
+    "verification": [
+      "Step 1: Check file exists at plugins/memory-manager/skills/memory-init/SKILL.md",
+      "Step 2: Verify file starts with # heading, no frontmatter",
+      "Step 3: Verify file describes creating memory.json with project context fields"
+    ],
+    "passes": false
+  },
+  {
+    "id": 28,
+    "phase": "plugin",
+    "description": "Create plugins/memory-manager/skills/memory-recall/SKILL.md — skill for surfacing relevant prior context from memory.json for current task (no frontmatter)",
+    "verification": [
+      "Step 1: Check file exists at plugins/memory-manager/skills/memory-recall/SKILL.md",
+      "Step 2: Verify file starts with # heading, no frontmatter",
+      "Step 3: Verify file describes reading memory.json and surfacing relevant entries"
+    ],
+    "passes": false
+  },
+  {
+    "id": 29,
+    "phase": "plugin",
+    "description": "Create plugins/memory-manager/skills/memory-update/SKILL.md — skill for summarizing and persisting session learnings to memory.json (no frontmatter)",
+    "verification": [
+      "Step 1: Check file exists at plugins/memory-manager/skills/memory-update/SKILL.md",
+      "Step 2: Verify file starts with # heading, no frontmatter",
+      "Step 3: Verify file describes summarizing session and updating memory.json fields"
+    ],
+    "passes": false
+  },
+  {
+    "id": 30,
+    "phase": "improvement",
+    "description": "Update plugins/planning/ to v2.1.0 — add plugins/planning/references/EVALUATOR-PATTERN.md with evaluator scoring criteria examples for phase gate transitions",
+    "verification": [
+      "Step 1: Check plugins/planning/.claude-plugin/plugin.json version is 2.1.0",
+      "Step 2: Check plugins/planning/references/EVALUATOR-PATTERN.md exists",
+      "Step 3: Verify EVALUATOR-PATTERN.md contains scoring criteria examples"
+    ],
+    "passes": false
+  },
+  {
+    "id": 31,
+    "phase": "improvement",
+    "description": "Update plugins/code-quality-gate/ to v1.1.0 — update /quality SKILL.md to emit structured score output with per-check breakdown table instead of pass/fail",
+    "verification": [
+      "Step 1: Check plugins/code-quality-gate/.claude-plugin/plugin.json version is 1.1.0",
+      "Step 2: Verify /quality SKILL.md mentions score or scoring with breakdown",
+      "Step 3: Verify SKILL.md contains a table or structured output format"
+    ],
+    "passes": false
+  },
+  {
+    "id": 32,
+    "phase": "improvement",
+    "description": "Update plugins/test-quality/ to v1.1.0 — update /test-gen SKILL.md to mention optional eval suite generation in addition to unit tests",
+    "verification": [
+      "Step 1: Check plugins/test-quality/.claude-plugin/plugin.json version is 1.1.0",
+      "Step 2: Verify /test-gen SKILL.md mentions eval suite option",
+      "Step 3: Verify SKILL.md references eval-framework plugin as optional dependency"
+    ],
+    "passes": false
+  },
+  {
+    "id": 33,
+    "phase": "improvement",
+    "description": "Update plugins/context-sync/ to v1.1.0 — update hook to append context drift events to context-sync.log for observability/traceability",
+    "verification": [
+      "Step 1: Check plugins/context-sync/.claude-plugin/plugin.json version is 1.1.0",
+      "Step 2: Verify hooks/hooks.json or hook script references context-sync.log",
+      "Step 3: Verify the hook appends drift events with timestamps"
+    ],
+    "passes": false
+  },
+  {
+    "id": 34,
+    "phase": "validation",
+    "description": "All tests pass: uv run pytest tests/ -v exits 0 with all plugin structure, tool, and skill tests green",
+    "verification": [
+      "Step 1: Run: uv run pytest tests/ -v",
+      "Step 2: Verify exit code is 0",
+      "Step 3: Verify no test failures or errors in output"
+    ],
+    "passes": false
+  },
+  {
+    "id": 35,
+    "phase": "validation",
+    "description": "marketplace.json reflects all 12 plugins (10 original + agent-patterns + memory-manager); run marketplace_gen.py after all plugins created",
+    "verification": [
+      "Step 1: Run: uv run python tools/marketplace_gen.py",
+      "Step 2: Count plugins in .claude-plugin/marketplace.json — must be >= 12",
+      "Step 3: Verify both agent-patterns and memory-manager appear in the plugins list"
+    ],
+    "passes": false
+  }
+]
