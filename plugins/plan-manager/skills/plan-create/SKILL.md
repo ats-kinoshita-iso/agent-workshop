@@ -1,5 +1,10 @@
 ---
-description: Create a new implementation plan from template with auto-incrementing ID
+name: plan-create
+description: >-
+  Create a new implementation plan from template with auto-incrementing ID. Use
+  this skill when the user asks to "create a plan", "start a new plan", "new
+  implementation plan", or any request to initialize a structured plan file for
+  tracking phased work with gates.
 ---
 
 Create a new plan file in `plans/active/`. Steps:

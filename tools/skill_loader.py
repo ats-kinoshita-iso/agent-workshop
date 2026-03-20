@@ -1,4 +1,9 @@
-"""Skill loader — parses and validates Claude Code skill definitions."""
+"""Skill loader — parses and validates Claude Code skill definitions.
+
+Follows the Anthropic Agent Skills convention where SKILL.md frontmatter
+requires only ``name`` and ``description``.  Optional fields (``version``,
+``trigger``, ``targets``, ``tags``, ``license``) are accepted but not enforced.
+"""
 
 from __future__ import annotations
 
@@ -8,7 +13,9 @@ from pathlib import Path
 
 import yaml
 
-REQUIRED_FIELDS: frozenset[str] = frozenset({"name", "version", "trigger", "description"})
+# Required frontmatter fields — aligned with Anthropic's skills standard.
+REQUIRED_FIELDS: frozenset[str] = frozenset({"name", "description"})
+
 SEMVER_RE = re.compile(r"^\d+\.\d+\.\d+$")
 
 
@@ -17,25 +24,31 @@ class Skill:
     """A parsed and validated Claude Code skill definition."""
 
     name: str
-    version: str
-    trigger: str
     description: str
+    version: str = ""
+    trigger: str = ""
     targets: list[str] = field(default_factory=list)
     tags: list[str] = field(default_factory=list)
+    license: str = ""
     body: str = ""
     source_path: Path = field(default_factory=Path)
 
     def to_registry_entry(self) -> dict[str, object]:
         """Return a dict suitable for inclusion in registry.json."""
-        return {
+        entry: dict[str, object] = {
             "name": self.name,
-            "version": self.version,
-            "trigger": self.trigger,
             "description": self.description,
-            "targets": self.targets,
-            "tags": self.tags,
             "source": str(self.source_path),
         }
+        if self.version:
+            entry["version"] = self.version
+        if self.trigger:
+            entry["trigger"] = self.trigger
+        if self.targets:
+            entry["targets"] = self.targets
+        if self.tags:
+            entry["tags"] = self.tags
+        return entry
 
 
 class SkillValidationError(ValueError):
@@ -44,6 +57,10 @@ class SkillValidationError(ValueError):
 
 def parse_skill(path: Path) -> Skill:
     """Parse a skill Markdown file and return a validated Skill instance.
+
+    Follows the Anthropic Agent Skills convention: frontmatter requires
+    ``name`` and ``description``.  ``version``, ``trigger``, ``targets``,
+    ``tags``, and ``license`` are optional.
 
     Args:
         path: Path to a .md skill file with YAML frontmatter.
@@ -77,14 +94,18 @@ def parse_skill(path: Path) -> Skill:
     if missing:
         raise SkillValidationError(f"{path}: missing required fields: {sorted(missing)}")
 
-    # Type checks
-    for key in ("name", "version", "trigger", "description"):
+    # Validate required fields are non-empty strings
+    for key in ("name", "description"):
         if not isinstance(meta[key], str) or not meta[key]:
             raise SkillValidationError(f"{path}: field '{key}' must be a non-empty string")
 
-    # Semver check
-    version = str(meta["version"])
-    if not SEMVER_RE.match(version):
+    # Optional string fields
+    version = str(meta.get("version", ""))
+    trigger = str(meta.get("trigger", ""))
+    license_text = str(meta.get("license", ""))
+
+    # Semver check only if version is provided
+    if version and not SEMVER_RE.match(version):
         raise SkillValidationError(
             f"{path}: 'version' must be a semver string (e.g. '1.0.0'), got {version!r}"
         )
@@ -99,11 +120,12 @@ def parse_skill(path: Path) -> Skill:
 
     return Skill(
         name=str(meta["name"]),
-        version=version,
-        trigger=str(meta["trigger"]),
         description=str(meta["description"]),
+        version=version,
+        trigger=trigger,
         targets=[str(t) for t in targets],
         tags=[str(t) for t in tags],
+        license=license_text,
         body=body,
         source_path=path.resolve(),
     )

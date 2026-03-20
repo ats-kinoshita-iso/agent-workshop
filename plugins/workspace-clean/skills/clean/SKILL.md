@@ -1,5 +1,11 @@
 ---
-description: Interactive workspace cleanup — shows findings and asks before each action
+name: clean
+description: >-
+  Interactive workspace cleanup that detects and removes build artifacts, stale
+  temp files, and project clutter. Use this skill when the user asks to "clean up",
+  "remove build artifacts", "clean the workspace", "delete temp files", or any
+  request to interactively find and remove hygiene issues with confirmation before
+  each action.
 ---
 
 Scan the workspace for hygiene issues. Check for:

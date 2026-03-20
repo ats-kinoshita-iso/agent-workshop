@@ -1,5 +1,11 @@
 ---
-description: Run the full quality gate and report pass/fail status for all checks
+name: quality
+description: >-
+  Run the full quality gate and report pass/fail status for all project checks.
+  Use this skill when the user asks to "check quality", "run all checks", "run
+  the quality gate", "is the code clean", "lint and test everything", or any
+  request to validate the overall health of the codebase before committing or
+  merging.
 ---
 
 Run every quality check for this project in order of speed. For each check, report

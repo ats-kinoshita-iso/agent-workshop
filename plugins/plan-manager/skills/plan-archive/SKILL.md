@@ -1,5 +1,10 @@
 ---
-description: Archive completed or abandoned plans
+name: plan-archive
+description: >-
+  Archive completed or abandoned plans by moving them from active to archive. Use
+  this skill when the user asks to "archive plans", "clean up finished plans",
+  "move completed plans", or any request to finalize plans that have all gates
+  passed or are marked as abandoned.
 ---
 
 Scan `plans/active/` for plans that are completed (all gates passed) or explicitly

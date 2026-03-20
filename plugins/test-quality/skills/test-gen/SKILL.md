@@ -1,5 +1,10 @@
 ---
-description: Generate tests for a specified module using project conventions
+name: test-gen
+description: >-
+  Generate tests for a specified module using project conventions. Use this skill
+  when the user asks to "write tests for", "generate tests", "add test coverage",
+  "test this module", or any request to create new test files following the
+  project's existing patterns, fixtures, and assertion style.
 ---
 
 Generate tests for the module or file specified by the user. Steps:

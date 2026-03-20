@@ -1,5 +1,9 @@
 ---
-description: Show all active plans with gate completion percentages
+name: plan-status
+description: >-
+  Show all active plans with gate completion percentages. Use this skill when the
+  user asks to "show plans", "plan status", "what plans are active", "how are my
+  plans doing", or any request to review progress on tracked implementation plans.
 ---
 
 Scan the `plans/active/` directory (or wherever plans are stored in this project).

@@ -1,5 +1,10 @@
 ---
-description: Read-only report of workspace hygiene issues (no modifications)
+name: clean-audit
+description: >-
+  Read-only report of workspace hygiene issues without making any modifications.
+  Use this skill when the user asks to "audit workspace", "show cleanup report",
+  "what needs cleaning", "hygiene check", or any request to assess workspace
+  cleanliness without actually deleting or modifying anything.
 ---
 
 Scan the workspace for hygiene issues and produce a read-only report. Check for:

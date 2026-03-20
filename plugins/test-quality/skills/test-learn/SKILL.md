@@ -1,5 +1,10 @@
 ---
-description: After a bug fix, extract the testing lesson and update the knowledge base
+name: test-learn
+description: >-
+  Extract testing lessons from bug fixes and update the knowledge base. Use this
+  skill when the user asks to "learn from this bug", "extract a testing lesson",
+  "update test knowledge", "what should we test for this", or after completing a
+  bug fix to capture reusable test patterns that prevent similar regressions.
 ---
 
 Analyze the most recent bug fix to extract a testing lesson. Steps:
