@@ -5,6 +5,30 @@
   },
   "plugins": [
     {
+      "name": "anthropic-creative-skills",
+      "source": "./plugins/anthropic-creative-skills",
+      "description": "Anthropic's official creative and design skills for generative art, frontend design, visual themes, Slack GIFs, and brand-consistent styling.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "anthropic-dev-skills",
+      "source": "./plugins/anthropic-dev-skills",
+      "description": "Anthropic's official development skills for Claude API integration, MCP server building, skill creation, web artifact building, and browser-based testing.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "anthropic-document-skills",
+      "source": "./plugins/anthropic-document-skills",
+      "description": "Anthropic's official document processing skills for creating, reading, and editing Word (.docx), PDF, PowerPoint (.pptx), and Excel (.xlsx) files with professional formatting and validation.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "anthropic-enterprise-skills",
+      "source": "./plugins/anthropic-enterprise-skills",
+      "description": "Anthropic's official enterprise communication skills for co-authoring documentation and writing internal communications like status reports, newsletters, and FAQs.",
+      "version": "1.0.0"
+    },
+    {
       "name": "code-quality-gate",
       "source": "./plugins/code-quality-gate",
       "description": "Unified quality orchestrator that runs all project linters, formatters, type checkers, and tests as a single pass/fail gate.",
@@ -41,5 +65,5 @@
       "version": "1.0.0"
     }
   ],
-  "_generated_at": "2026-03-19T15:48:11.033073+00:00"
+  "_generated_at": "2026-03-20T03:38:25.753940+00:00"
 }

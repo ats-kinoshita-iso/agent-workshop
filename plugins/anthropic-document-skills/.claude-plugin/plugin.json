@@ -1,0 +1,11 @@
+{
+  "name": "anthropic-document-skills",
+  "description": "Anthropic's official document processing skills for creating, reading, and editing Word (.docx), PDF, PowerPoint (.pptx), and Excel (.xlsx) files with professional formatting and validation.",
+  "version": "1.0.0",
+  "author": {
+    "name": "anthropic"
+  },
+  "repository": "https://github.com/anthropics/skills",
+  "license": "SEE LICENSE.txt",
+  "keywords": ["documents", "docx", "pdf", "pptx", "xlsx", "office", "anthropic"]
+}
