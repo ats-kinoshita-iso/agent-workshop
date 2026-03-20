@@ -1,11 +1,16 @@
 ---
-description: Full audit of test suite quality — coverage gaps, brittle patterns, assertion quality
+name: test-audit
+description: >-
+  Full audit of test suite quality including coverage gaps, brittle patterns, and
+  assertion quality. Use this skill when the user asks to "audit tests", "review
+  test quality", "find test gaps", "are my tests good enough", or any request to
+  assess the overall health and completeness of the project's test suite.
 ---
 
 Perform a comprehensive audit of the project's test suite. Analyze:
 
-1. **Coverage gaps**: Find source modules without corresponding test files. Check for
-   untested public functions and classes.
+1. **Coverage gaps**: Use Glob to find source modules without corresponding test files.
+   Use Grep to check for untested public functions and classes.
 2. **Brittle patterns**: Tests that depend on timing, file system state, network calls,
    or specific ordering. Tests with excessive mocking.
 3. **Assertion quality**: Tests with no assertions, overly broad assertions (`assert True`),

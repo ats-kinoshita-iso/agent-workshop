@@ -1,13 +1,12 @@
 ---
 name: planning
 description: >-
-  Produces phased implementation plans with explicit pass/fail gates for
-  software tasks. This skill should be used when the user asks to "plan an
-  implementation", "create a phased plan", "break down this task", "design
-  an approach", "write an implementation plan", or any request that involves
-  decomposing a software change into ordered steps with validation criteria.
-  Use this skill even when the user simply says "plan this" or "how should
-  I implement this".
+  Produce phased implementation plans with explicit pass/fail gates for software
+  tasks. Use this skill when the user asks to "plan an implementation", "create a
+  phased plan", "break down this task", "design an approach", "write an
+  implementation plan", or any request that involves decomposing a software change
+  into ordered steps with validation criteria. Use this skill even when the user
+  simply says "plan this" or "how should I implement this".
 ---
 
 ## Step 1: Inspect the codebase

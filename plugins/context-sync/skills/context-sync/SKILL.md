@@ -1,12 +1,18 @@
 ---
-description: Audit and update CLAUDE.md files to match the current state of the codebase
+name: context-sync
+description: >-
+  Audit and update CLAUDE.md files to match the current state of the codebase.
+  Use this skill when the user asks to "sync CLAUDE.md", "update project docs",
+  "audit context files", "is the CLAUDE.md up to date", or any request to ensure
+  CLAUDE.md files accurately reflect the project's current structure, conventions,
+  and tooling.
 ---
 
 Perform a full audit of CLAUDE.md files in this project. For each CLAUDE.md found:
 
 1. **Read** the current CLAUDE.md content
-2. **Scan** the directory it lives in — look at file structure, imports, exports,
-   config files, and any conventions visible in the code
+2. **Scan** the directory it lives in — use Glob to find files and Grep to check
+   imports, exports, config files, and conventions visible in the code
 3. **Compare** what the CLAUDE.md describes against what actually exists
 4. **Identify** stale sections (referencing deleted files, outdated commands, wrong
    directory structure) and missing sections (new patterns, new tools, changed conventions)
