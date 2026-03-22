@@ -66,3 +66,29 @@ the server to fail to start.
 | Path arguments | Replace example paths with your actual directories |
 | Number of paths | Add or remove path arguments as needed |
 | `npx` vs `bunx` | Replace `npx` with `bunx` if you prefer bun |
+
+## Security considerations
+
+**Recommended scope — expose only what is needed:**
+- List only the specific directories Claude requires (e.g. `~/projects/myapp/data`)
+  rather than broad roots like `~` or `/home/user`
+- Prefer read-only subdirectories; avoid exposing parent directories that contain
+  sensitive files (`.ssh/`, `.aws/`, `.gnupg/`, credential stores)
+- Avoid including directories that contain secrets, API keys, or private keys
+  (e.g. do NOT expose `~/.config`, `~/.ssh`, or any directory holding `.env` files)
+
+**What to avoid:**
+- Never expose system directories (`/etc`, `/var`, `C:\Windows\System32`)
+- Never expose home directories at the top level — scope to project subdirectories
+- Avoid exposing directories shared by multiple users or containing other users' data
+- Do not grant write access unless Claude explicitly needs to create or modify files
+  in that location; write permission combined with broad roots is high-risk
+
+**Permission and operational implications:**
+- The filesystem MCP server inherits the OS-level permissions of the process running
+  Claude Code — it cannot exceed those permissions, but it will use them fully
+- Audit the allowed paths list whenever the project scope changes
+- Consider using a dedicated low-privilege user account when running Claude Code
+  in automated or CI environments to limit the blast radius of any path escape
+- Paths are not validated for symlink traversal — avoid including directories that
+  contain symlinks pointing outside the intended scope

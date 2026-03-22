@@ -448,7 +448,7 @@
       "Step 2: Spot-check 3 SKILL.md files \u2014 each has clear numbered/bulleted instructions",
       "Step 3: Run `uv run pytest tests/ -v` \u2014 still all passing"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 42,
@@ -459,7 +459,7 @@
       "Step 2: cookbook/mcp/README.md contains no 'Planned' heading",
       "Step 3: Both files have a last-updated date comment or note at the top"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 43,
@@ -470,7 +470,7 @@
       "Step 2: cookbook/mcp/github.md contains a 'Security' or 'Security considerations' section",
       "Step 3: Each section has at least 3 bullet points of actionable guidance"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 44,
