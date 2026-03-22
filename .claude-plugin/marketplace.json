@@ -47,9 +47,21 @@
       "version": "1.1.0"
     },
     {
+      "name": "eval-framework",
+      "source": "./plugins/eval-framework",
+      "description": "Evaluation framework skills for designing scoring rubrics, running structured evaluations on LLM outputs, and comparing candidate outputs to recommend a winner.",
+      "version": "1.0.0"
+    },
+    {
       "name": "memory-manager",
       "source": "./plugins/memory-manager",
       "description": "Skills for persistent memory across Claude Code sessions: initialize a memory file, recall relevant context for the current task, and persist session learnings.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "observability",
+      "source": "./plugins/observability",
+      "description": "Observability skills for designing logging and tracing strategies, instrumenting existing code with structured log points, and analyzing trace logs to diagnose production issues.",
       "version": "1.0.0"
     },
     {
@@ -77,5 +89,5 @@
       "version": "1.0.0"
     }
   ],
-  "_generated_at": "2026-03-20T05:58:08.754099+00:00"
+  "_generated_at": "2026-03-22T15:38:42.411398+00:00"
 }

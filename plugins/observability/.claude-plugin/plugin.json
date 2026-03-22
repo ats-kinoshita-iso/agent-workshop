@@ -1,0 +1,17 @@
+{
+  "name": "observability",
+  "description": "Observability skills for designing logging and tracing strategies, instrumenting existing code with structured log points, and analyzing trace logs to diagnose production issues.",
+  "version": "1.0.0",
+  "author": {
+    "name": "agent-workshop"
+  },
+  "license": "MIT",
+  "keywords": [
+    "observability",
+    "logging",
+    "tracing",
+    "instrumentation",
+    "monitoring",
+    "debugging"
+  ]
+}

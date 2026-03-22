@@ -6,6 +6,6 @@
     "name": "anthropic"
   },
   "repository": "https://github.com/anthropics/skills",
-  "license": "SEE LICENSE.txt",
+  "license": "Apache-2.0",
   "keywords": ["documents", "docx", "pdf", "pptx", "xlsx", "office", "anthropic"]
 }

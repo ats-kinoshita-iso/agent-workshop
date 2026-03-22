@@ -481,7 +481,7 @@
       "Step 2: All 12 plugin.json files have a license field with a recognized value",
       "Step 3: Run `uv run pytest tests/plugins/ -v` \u2014 all still passing"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 45,
@@ -492,7 +492,7 @@
       "Step 2: All 3 SKILL.md files exist with bodies >= 15 lines each",
       "Step 3: Run `uv run pytest tests/ -v` \u2014 all pass; eval-framework in marketplace.json"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 46,
@@ -503,6 +503,6 @@
       "Step 2: All 3 SKILL.md files exist with bodies >= 15 lines each",
       "Step 3: Run `uv run pytest tests/ -v` \u2014 all pass; observability in marketplace.json"
     ],
-    "passes": false
+    "passes": true
   }
 ]

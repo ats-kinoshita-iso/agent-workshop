@@ -1,0 +1,17 @@
+{
+  "name": "eval-framework",
+  "description": "Evaluation framework skills for designing scoring rubrics, running structured evaluations on LLM outputs, and comparing candidate outputs to recommend a winner.",
+  "version": "1.0.0",
+  "author": {
+    "name": "agent-workshop"
+  },
+  "license": "MIT",
+  "keywords": [
+    "evaluation",
+    "scoring",
+    "rubric",
+    "llm-eval",
+    "quality",
+    "comparison"
+  ]
+}
