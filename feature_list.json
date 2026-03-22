@@ -383,5 +383,126 @@
       "Step 3: Verify both agent-patterns and memory-manager appear in the plugins list"
     ],
     "passes": true
+  },
+  {
+    "id": 36,
+    "phase": "roadmap-p1",
+    "description": "Create tools/plan_manager.py with an audit() function that scans plans/active/ for YAML-frontmatter plan files, reports gate completion percentages, flags stale plans (no changes in 30+ days), and updates plans/registry.json. Add tests/tools/test_plan_manager.py with at least 4 tests.",
+    "verification": [
+      "Step 1: Run `uv run python tools/plan_manager.py audit` \u2014 exits 0, prints output",
+      "Step 2: Verify tests/tools/test_plan_manager.py exists with >= 4 test functions",
+      "Step 3: Run `uv run pytest tests/tools/test_plan_manager.py -v` \u2014 all pass"
+    ],
+    "passes": false
+  },
+  {
+    "id": 37,
+    "phase": "roadmap-p1",
+    "description": "Fix plugins/code-quality-gate/hooks/hooks.json Stop hook command to produce a readable multi-line quality summary instead of `tail -1`. The new command should show per-check pass/fail status (format, lint, type-check, tests).",
+    "verification": [
+      "Step 1: Read plugins/code-quality-gate/hooks/hooks.json \u2014 Stop hook command must NOT contain only `tail -1`",
+      "Step 2: Verify Stop hook command shows at least 2 quality checks in output",
+      "Step 3: Syntax-check any shell commands in hooks.json are valid bash"
+    ],
+    "passes": false
+  },
+  {
+    "id": 38,
+    "phase": "roadmap-p2",
+    "description": "Create tools/hook_validator.py that scans all hooks.json files in plugins/, checks command syntax (shlex.split), verifies any referenced scripts exist, and flags unknown hook event types. Add tests/tools/test_hook_validator.py with at least 4 tests.",
+    "verification": [
+      "Step 1: Run `uv run python tools/hook_validator.py` \u2014 exits 0, prints summary of all plugins",
+      "Step 2: Verify tests/tools/test_hook_validator.py exists with >= 4 test functions",
+      "Step 3: Run `uv run pytest tests/tools/test_hook_validator.py -v` \u2014 all pass"
+    ],
+    "passes": false
+  },
+  {
+    "id": 39,
+    "phase": "roadmap-p2",
+    "description": "Add functional integration tests for 4 custom plugins: tests/plugins/test_code_quality_gate_integration.py (test scoring/hook logic), tests/plugins/test_memory_manager_integration.py (test memory.json CRUD), tests/plugins/test_plan_manager_integration.py (test audit() with fixture plans), tests/plugins/test_context_sync_integration.py (test hook log entry writing). Each file must have at least 3 test functions.",
+    "verification": [
+      "Step 1: All 4 integration test files exist in tests/plugins/",
+      "Step 2: Each file has >= 3 test functions",
+      "Step 3: Run `uv run pytest tests/plugins/test_*_integration.py -v` \u2014 all pass"
+    ],
+    "passes": false
+  },
+  {
+    "id": 40,
+    "phase": "roadmap-p2",
+    "description": "Add SKILL.md body depth validation to tools/skill_loader.py: a validate_body() function that warns (but does not error) when body is fewer than 10 lines or contains no imperative verbs (Run, Create, List, Read, Write, etc.). Add corresponding tests to tests/skills/test_skill_loader.py.",
+    "verification": [
+      "Step 1: skill_loader.py has a validate_body() function",
+      "Step 2: tests/skills/test_skill_loader.py includes tests for validate_body()",
+      "Step 3: Run `uv run pytest tests/skills/ -v` \u2014 all pass"
+    ],
+    "passes": false
+  },
+  {
+    "id": 41,
+    "phase": "roadmap-p3",
+    "description": "Audit and improve SKILL.md bodies for Anthropic-imported plugins. Every SKILL.md in anthropic-creative-skills, anthropic-dev-skills, anthropic-document-skills, and anthropic-enterprise-skills must have a body of at least 10 substantive lines with clear imperative instructions. Update any that are thin or placeholder-like.",
+    "verification": [
+      "Step 1: Run `uv run python tools/skill_loader.py` or scan \u2014 no SKILL.md in those 4 plugins has < 10 body lines",
+      "Step 2: Spot-check 3 SKILL.md files \u2014 each has clear numbered/bulleted instructions",
+      "Step 3: Run `uv run pytest tests/ -v` \u2014 still all passing"
+    ],
+    "passes": false
+  },
+  {
+    "id": 42,
+    "phase": "roadmap-p3",
+    "description": "Fix cookbook/hooks/README.md and cookbook/mcp/README.md: remove all 'Planned' section headers, replace with 'Available' or similar, and add a last-updated date comment at the top of each file.",
+    "verification": [
+      "Step 1: cookbook/hooks/README.md contains no 'Planned' heading",
+      "Step 2: cookbook/mcp/README.md contains no 'Planned' heading",
+      "Step 3: Both files have a last-updated date comment or note at the top"
+    ],
+    "passes": false
+  },
+  {
+    "id": 43,
+    "phase": "roadmap-p3",
+    "description": "Add 'Security considerations' sections to cookbook/mcp/filesystem.md and cookbook/mcp/github.md. Each section must cover: recommended scope (what to expose), what to avoid, and any rate-limit or permission implications.",
+    "verification": [
+      "Step 1: cookbook/mcp/filesystem.md contains a 'Security' or 'Security considerations' section",
+      "Step 2: cookbook/mcp/github.md contains a 'Security' or 'Security considerations' section",
+      "Step 3: Each section has at least 3 bullet points of actionable guidance"
+    ],
+    "passes": false
+  },
+  {
+    "id": 44,
+    "phase": "roadmap-p3",
+    "description": "Standardize license fields in all plugin.json files to valid SPDX identifiers. Fix anthropic-document-skills (currently 'SEE LICENSE.txt'). Audit all 12 plugins and ensure license values are one of: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, GPL-3.0, LGPL-2.1, Proprietary, or Source-Available.",
+    "verification": [
+      "Step 1: Read anthropic-document-skills plugin.json \u2014 license is not 'SEE LICENSE.txt'",
+      "Step 2: All 12 plugin.json files have a license field with a recognized value",
+      "Step 3: Run `uv run pytest tests/plugins/ -v` \u2014 all still passing"
+    ],
+    "passes": false
+  },
+  {
+    "id": 45,
+    "phase": "roadmap-p4",
+    "description": "Create plugins/eval-framework/ v1.0.0 with 3 skills: eval-design (design evaluation criteria and scoring rubrics), eval-run (execute evaluation and produce scored report), eval-compare (compare two outputs on the same criteria). Include plugin.json, README.md. Run marketplace_gen and all tests.",
+    "verification": [
+      "Step 1: plugins/eval-framework/.claude-plugin/plugin.json exists, version=1.0.0",
+      "Step 2: All 3 SKILL.md files exist with bodies >= 15 lines each",
+      "Step 3: Run `uv run pytest tests/ -v` \u2014 all pass; eval-framework in marketplace.json"
+    ],
+    "passes": false
+  },
+  {
+    "id": 46,
+    "phase": "roadmap-p4",
+    "description": "Create plugins/observability/ v1.0.0 with 3 skills: trace-plan (design logging/tracing strategy), instrument-code (add structured log points to existing code), analyze-traces (parse and interpret trace logs). Include plugin.json, README.md. Run marketplace_gen and all tests.",
+    "verification": [
+      "Step 1: plugins/observability/.claude-plugin/plugin.json exists, version=1.0.0",
+      "Step 2: All 3 SKILL.md files exist with bodies >= 15 lines each",
+      "Step 3: Run `uv run pytest tests/ -v` \u2014 all pass; observability in marketplace.json"
+    ],
+    "passes": false
   }
 ]
