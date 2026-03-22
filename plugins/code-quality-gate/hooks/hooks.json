@@ -9,7 +9,7 @@
     {
       "event": "Stop",
       "type": "command",
-      "command": "echo '--- Quality Summary ---' && uv run ruff format --check . 2>&1 | tail -1 && uv run ruff check . 2>&1 | tail -1"
+      "command": "uv run python plugins/code-quality-gate/hooks/quality_summary.py"
     }
   ]
 }

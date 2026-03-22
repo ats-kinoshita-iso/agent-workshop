@@ -393,7 +393,7 @@
       "Step 2: Verify tests/tools/test_plan_manager.py exists with >= 4 test functions",
       "Step 3: Run `uv run pytest tests/tools/test_plan_manager.py -v` \u2014 all pass"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 37,
@@ -404,7 +404,7 @@
       "Step 2: Verify Stop hook command shows at least 2 quality checks in output",
       "Step 3: Syntax-check any shell commands in hooks.json are valid bash"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 38,
@@ -415,7 +415,7 @@
       "Step 2: Verify tests/tools/test_hook_validator.py exists with >= 4 test functions",
       "Step 3: Run `uv run pytest tests/tools/test_hook_validator.py -v` \u2014 all pass"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 39,

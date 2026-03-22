@@ -1,0 +1,18 @@
+{
+  "plans": [
+    {
+      "id": "example-plan",
+      "title": "Example Active Plan",
+      "status": "active",
+      "created": "2026-03-01",
+      "updated": "2026-03-20",
+      "gate_pct": 66.7,
+      "is_stale": false,
+      "gates_total": 3,
+      "gates_done": 2,
+      "source": "C:\\Users\\akino\\agent-workshop\\plans\\active\\example-plan.md"
+    }
+  ],
+  "total": 1,
+  "stale": 0
+}
