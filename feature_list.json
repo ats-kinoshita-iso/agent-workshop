@@ -426,7 +426,7 @@
       "Step 2: Each file has >= 3 test functions",
       "Step 3: Run `uv run pytest tests/plugins/test_*_integration.py -v` \u2014 all pass"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 40,
@@ -437,7 +437,7 @@
       "Step 2: tests/skills/test_skill_loader.py includes tests for validate_body()",
       "Step 3: Run `uv run pytest tests/skills/ -v` \u2014 all pass"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 41,

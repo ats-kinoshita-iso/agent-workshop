@@ -131,6 +131,75 @@ def parse_skill(path: Path) -> Skill:
     )
 
 
+IMPERATIVE_VERBS: frozenset[str] = frozenset(
+    {
+        "run", "create", "list", "read", "write", "add", "remove", "delete",
+        "update", "check", "verify", "scan", "parse", "generate", "build",
+        "install", "execute", "output", "print", "return", "call", "open",
+        "close", "load", "save", "fetch", "send", "report", "format",
+        "validate", "inspect", "search", "find", "compute", "apply",
+    }
+)
+
+BODY_MIN_LINES: int = 10
+
+
+@dataclass
+class BodyWarning:
+    """A warning about a skill body's content quality."""
+
+    path: Path
+    message: str
+
+    def __str__(self) -> str:
+        return f"{self.path}: {self.message}"
+
+
+def validate_body(skill: Skill) -> list[BodyWarning]:
+    """Validate the body of a parsed Skill for content depth.
+
+    Issues warnings (does NOT raise) when the body:
+    - Has fewer than ``BODY_MIN_LINES`` (10) non-blank lines
+    - Contains no recognisable imperative verbs from ``IMPERATIVE_VERBS``
+
+    Args:
+        skill: A parsed Skill instance with a populated ``body`` attribute.
+
+    Returns:
+        A list of :class:`BodyWarning` instances (empty means no issues).
+    """
+    warnings: list[BodyWarning] = []
+    path = skill.source_path
+
+    non_blank_lines = [ln for ln in skill.body.splitlines() if ln.strip()]
+    if len(non_blank_lines) < BODY_MIN_LINES:
+        warnings.append(
+            BodyWarning(
+                path=path,
+                message=(
+                    f"body has only {len(non_blank_lines)} non-blank line(s) "
+                    f"(minimum {BODY_MIN_LINES})"
+                ),
+            )
+        )
+
+    body_lower = skill.body.lower()
+    words = re.findall(r"\b[a-z]+\b", body_lower)
+    found_verbs = IMPERATIVE_VERBS & set(words)
+    if not found_verbs:
+        warnings.append(
+            BodyWarning(
+                path=path,
+                message=(
+                    "body contains no imperative verbs "
+                    "(e.g. Run, Create, List, Read, Write)"
+                ),
+            )
+        )
+
+    return warnings
+
+
 def load_skills_dir(skills_dir: Path) -> list[Skill]:
     """Load and validate all .md skill files in a directory (non-recursive).
 
