@@ -9,7 +9,22 @@ description: >-
   simply says "plan this" or "how should I implement this".
 ---
 
-## Step 1: Inspect the codebase
+## Integration with the research-plan-implement workflow
+
+This skill is the **third phase** of the research-plan-implement workflow. When
+invoked after the **research** and **propose** skills:
+
+- **Skip Step 1** (codebase inspection) — the research brief already contains
+  codebase findings. Reference those findings directly.
+- **In Step 2**, pull the What/Why/Constraints from the research brief and the
+  approved recommendation from the proposal. Do not re-derive them.
+- **In Step 3**, design phases that implement the approved recommendation, not
+  a freshly chosen approach.
+
+When invoked standalone (no prior research or proposal in context), execute all
+steps including Step 1.
+
+## Step 1: Inspect the codebase (standalone only)
 
 Before producing any plan, read relevant files to understand the current state:
 
@@ -18,7 +33,8 @@ Before producing any plan, read relevant files to understand the current state:
 - Read the project's CLAUDE.md, README, CI config, and test setup if they exist.
 - Identify existing patterns, conventions, and constraints that the plan must respect.
 
-Do not skip this step. Plans that ignore existing code produce wrong decompositions.
+Do not skip this step unless a research brief is already present in context.
+Plans that ignore existing code produce wrong decompositions.
 
 ## Step 2: Frame the problem
 

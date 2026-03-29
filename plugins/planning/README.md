@@ -1,6 +1,6 @@
 # planning
 
-Produces phased implementation plans with explicit pass/fail gates and automated validation steps.
+Produces phased implementation plans with explicit pass/fail gates, backed by a structured research-plan-implement workflow.
 
 ## Install
 
@@ -9,27 +9,45 @@ Produces phased implementation plans with explicit pass/fail gates and automated
 /plugin install planning@agent-workshop
 ```
 
-## Usage
+## Skills
 
-This skill is automatically invoked when you ask Claude Code to create an implementation plan.
-You can also invoke it directly:
+This plugin provides four skills that work independently or as a chained workflow:
+
+### `/planning:research`
+
+Deep investigation of the problem space. Surveys the codebase and external sources, identifies 2–5 alternatives, and documents constraints, unknowns, and risks. Produces a **research brief**.
+
+### `/planning:propose`
+
+Evaluates alternatives from a research brief against relevant dimensions (complexity, risk, maintainability, etc.), ranks them, and recommends an approach with trade-off analysis. Produces a **proposal**.
+
+### `/planning:planning`
+
+Decomposes an approved approach into 3–7 phased implementation steps, each with a Given/When/Then gate and an automated validation command. Produces an **implementation plan**.
+
+### `/planning:research-plan-implement`
+
+Orchestrates the full workflow in sequence: research → propose → plan. Enforces distinct phases, carries context forward, and gates Phase 3 on user approval of the proposal.
+
+## Workflow
 
 ```
-/planning:planning
+research → propose → [user approval] → plan
 ```
 
-## What It Does
+1. **Research** gathers evidence and identifies alternatives.
+2. **Propose** evaluates alternatives and recommends one.
+3. The user approves, adjusts, or rejects the recommendation.
+4. **Plan** decomposes the approved approach into gated phases.
 
-When triggered, Claude Code will:
-
-1. **Inspect the codebase** — reads relevant files, tests, and CI config to ground the plan in reality
-2. **Frame the problem** — states what is being built, why, what is out of scope, and key constraints
-3. **Decompose into phases** — breaks work into 3–7 small, independently completable vertical slices
-4. **Define gates** — each phase has a Given/When/Then acceptance criterion and an exact validation command
-5. **Self-review** — checks every gate is binary and automatable before presenting the plan
+Each skill can also be used standalone. When the planning skill runs without prior research/proposal context, it performs its own codebase inspection.
 
 ## Output Format
 
-Each plan includes a problem statement, per-phase goals and gates, a summary table, and a risks/open questions section.
+Each phase produces a structured artifact using its own template:
+
+- Research brief (`skills/research/references/RESEARCH-TEMPLATE.md`)
+- Proposal (`skills/propose/references/PROPOSAL-TEMPLATE.md`)
+- Implementation plan (`skills/planning/references/PLAN-TEMPLATE.md`)
 
 Gates use Given/When/Then format and reference observable behavior — not internal class names or implementation details.
