@@ -1,0 +1,18 @@
+{
+  "name": "prompt-optimizer",
+  "description": "Analyzes and rewrites prompts for Claude Code, applying structured prompt engineering patterns to produce clearer, more effective instructions.",
+  "version": "1.0.0",
+  "author": {
+    "name": "ats-kinoshita-iso"
+  },
+  "repository": "https://github.com/ats-kinoshita-iso/agent-workshop",
+  "license": "MIT",
+  "keywords": [
+    "prompt-engineering",
+    "prompt-optimization",
+    "prompt-improvement",
+    "structured-prompts",
+    "claude-code",
+    "context-engineering"
+  ]
+}
